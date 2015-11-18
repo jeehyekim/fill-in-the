@@ -1,0 +1,15 @@
+<h1>Page for new quizard</h1>
+
+<%= form_for @quiz do |f| %>
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="form-group">
+      <label for="title">Title</label><br>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label><br>
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+			<%= f.submit "Save your quizard!!!" %>
+  </div>
+<% end %>

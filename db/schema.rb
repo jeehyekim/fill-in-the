@@ -19,9 +19,8 @@ ActiveRecord::Schema.define(version: 20151118194403) do
   create_table "quizzes", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    # t.text     "keyword",    default: [],              array: true
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
