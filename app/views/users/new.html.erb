@@ -1,0 +1,27 @@
+
+<h2 class="text-center">Sign Up</h2>
+  <%= form_for @user do |f| %>
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="form-group">
+      <label for="firstName">First Name</label><br>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label><br>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label><br>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label><br>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label><br>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <%= f.submit "Sign Up" %>
+  </div>
+  <% end %>  

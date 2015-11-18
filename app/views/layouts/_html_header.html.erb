@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">name or logo</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nam navbar pull-right">
+        <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle">Sign Up</a>
+          <ul class="dropdown-menu pull-right" id="login-dp">
+            
+          </ul>
+          <%= form_for @user do |f| %>
+            <div class="form-group">
+              <label for="firstName">First Name</label><br>
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label><br>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label><br>
+              <%= f.text_field :username, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label><br>
+              <%= f.text_field :email, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label><br>
+              <%= f.password_field :password, class: "form-control" %>
+            </div>
+            <%= f.submit "Sign Up", class: "btn btn-primary pull-right" %>
+          <% end %>  
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
