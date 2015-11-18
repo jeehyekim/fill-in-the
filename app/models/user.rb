@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 3}
   validates :username, presence: true
 
+  def self.confirm(params)
+    @user = User.find_by(email: params[:email])
+    @user.try(:authenticate, params[:password])
+  end
+
 end
