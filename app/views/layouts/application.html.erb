@@ -32,6 +32,8 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
 	      <ul class="nav navbar-nav navbar-right">
 	      	
+	      	<li><%= link_to "Create Quiz", new_quiz_path, class:"pull-right" %></li>
+
 	      	<% if current_user.blank? %>
 		        <li><%= link_to "Sign Up", new_user_path, class:"pull-right" %></li>
 		        <li><%= link_to "Log In", new_session_path, class:"pull-right" %></li>
