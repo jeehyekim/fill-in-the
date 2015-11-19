@@ -3,7 +3,7 @@ class CreateQuizzes < ActiveRecord::Migration
     create_table :quizzes do |t|
       t.string :title
       t.text :content
-      # t.text :keyword, array: true, default: []
+      t.text :keyword, array: true, default: []
 
       t.timestamps null: false
     end

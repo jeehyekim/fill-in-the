@@ -1,1 +1,9 @@
-<div>Welcome, <%= @user.username %></div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+		<h2>Welcome, <%= @user.first_name %></h2>
+		<h5>joined: <%= @user.created_at %></h5>
+
+		<h3>This is the Profile Page</h3>
+	</div>
+</div>

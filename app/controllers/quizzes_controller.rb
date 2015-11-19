@@ -8,7 +8,6 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = Quiz.create(quiz_params)
 			redirect_to quiz_path(@quiz)
-		# render :show
 	end
 
 	def show
@@ -18,7 +17,7 @@ class QuizzesController < ApplicationController
 
 	private
 		def quiz_params
-			quiz_params = params.require(:quiz).permit(:title, :content)
+			quiz_params = params.require(:quiz).permit(:title, :content, :keyword)
 		end
 
 end

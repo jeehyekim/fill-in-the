@@ -1,8 +1,6 @@
 
 <div class="full-width-container">
 
- 
-
   <div class="text-center col-xs-12 col-sm-6 col-sm-offset-3 about-content">
     <h2>About Us</h2>
     <div class="about">
@@ -11,4 +9,15 @@
     <div class="quiz-button">
       <%= link_to "Create a Quiz Now!", new_quiz_path, class: "btn btn-primary" %>
     </div>
+  </div>
+</div>
+
+<h1>Welcome to Users Index</h1>
+
+<div>
+  There are currently <%= @users.length %> users signed up.
+</div>
+
+<div>
+  This will be our homepage. Sign up, Login, etc go here.
 </div>
