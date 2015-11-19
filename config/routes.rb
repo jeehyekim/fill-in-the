@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   resources :quizzes, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create]
 
-
 end
