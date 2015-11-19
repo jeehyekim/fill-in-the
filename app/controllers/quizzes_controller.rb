@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
 
 	private
 		def quiz_params
-			quiz_params = params.require(:quiz).permit(:title, :content)
+			quiz_params = params.require(:quiz).permit(:title, :content, :keyword)
 		end
 
 end
