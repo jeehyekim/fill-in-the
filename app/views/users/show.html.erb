@@ -5,5 +5,13 @@
 		<h5>joined: <%= @user.created_at %></h5>
 
 		<h3>This is the Profile Page</h3>
+
+		<br>
+		
+		<% @user.quizzes.each do |quiz| %>
+			<li type="none"><h3><%= quiz.title %></h3></li>
+			<li type="none"><%= quiz.content %></li>
+			<hr>
+		<% end %>
 	</div>
 </div>
