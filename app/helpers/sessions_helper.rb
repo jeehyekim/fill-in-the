@@ -6,7 +6,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id])
+    @current_user ||= session[:user_id] && User.find(session[:user_id])
+    #current user is assigned already or if session with user_id if there, find the user with user_id
   end
 
   def logged_in?
