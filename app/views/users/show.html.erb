@@ -1,17 +1,35 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4 col-sm-offset-2">
-		<h2>Welcome, <%= @user.first_name %></h2>
-		<h5>joined: <%= @user.created_at %></h5>
-
-		<h3>This is the Profile Page</h3>
-
-		<br>
-		
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+          <input type="file" class="form-control">
+          <h2>Welcome, <%= @user.first_name %></h2>
+          <h5>joined: <%= @user.created_at %></h5>
+        </div>
+      </div>
+		<div class="col-sm-4">
+		<h1>Created</h1>
+			<hr>
+			<% @user.quizzes.each do |quiz| %>
+				<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
+				<li type="none"><%= quiz.content %></li>
+				<hr>
+			<% end %>
+		</div>
+		<div class='col-sm-4 taken'>
+		<h1>Taken</h1>
+		<hr>
 		<% @user.quizzes.each do |quiz| %>
-			<li type="none"><h3><%= quiz.title %></h3></li>
+			<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
 			<li type="none"><%= quiz.content %></li>
 			<hr>
 		<% end %>
+		<div class="col-sm-1">
+			<h4>progress</h4>
+		</div>
+		</div>
 	</div>
 </div>
