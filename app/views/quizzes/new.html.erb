@@ -1,11 +1,15 @@
-<h1>Page for new quizard</h1>
-
+<h1 class="text-center">Page for new Quiz</h1>
+<br>
 <%= form_for @quiz do |f| %>
-  <div class="col-sm-4 col-sm-offset-4">
+  <div class="col-sm-6 col-sm-offset-3">
       <%= f.text_field :title, :placeholder => "Title...", class: "form-control" %>
       <br>
-      <%= f.text_field :content, :placeholder => "Content...", class: "form-control" %>
+      <%= f.text_area :content, :placeholder => "Content...", size:"4x15" , class: "form-control" %>
       <br>
-			<%= f.submit "Save your quizard!!!" %>
+      <%= f.text_field :keyword, :placeholder => "Keywords...", class: "form-control" %>
+      <br>
+      <div class="text-right">
+				<%= f.submit "Create", class:"btn btn-primary" %>
+			</div>
   </div>
 <% end %>
