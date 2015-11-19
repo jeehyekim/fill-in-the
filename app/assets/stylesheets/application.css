@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+@media {
+  #quiz-body {
+    position: absolute;
+    overflow-y: scroll; 
+  }
+  
