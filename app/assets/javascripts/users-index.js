@@ -1,17 +1,19 @@
 console.log('woo');
 
-var answerBlockNumber = 0;
-var addBlockToForm = function() {
+$(document).ready(function(){
 
-	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='answer here'> <button>hint</button> <span class='hint-show'>- - - -</span></div>";
+var answerBlockNumber = 0;
+var addBlockToForm = function(wordOut) {
+
+	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='" + wordOut + "' data-answer='" + wordOut + "'> <button>hint</button> <span class='hint-show'>- - - -</span></div>";
 	$('.block-stack').append(answerBlock);
 	// answerBlockNumber = answerBlockNumber + 1;
 };
 
-addBlockToForm();
+// addBlockToForm();
 
 var originalString = "Hello, how are you today my name is Noel, nice to meet you.";
-var targetString = 'today nice meet';
+var targetString = 'today nice name meet';
 var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
 
 
@@ -52,6 +54,7 @@ var num = 1;
 
 
 // this function builds the blanked text on the page using all the other functions
+// var makeBlankedText = function(stringContent, stringKeyWords) {
 var makeBlankedText = function(stringContent, stringKeyWords) {
 
 	var arr = textStringIntoArray(stringContent); //turn content into array of strings
@@ -71,15 +74,49 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 		arrJoined = arrBlanked.join(' '); //joined the array back into a string
 		console.log(arrJoined);
 
-		addBlockToForm();
+		addBlockToForm(wordOut);
 		num++;
 	}
 	// j querrry to throw the text onto the page
 	$('.text-area').append(arrJoined);
 };
 
+makeBlankedText(originalString, targetString);
+
+function checkAnswer(w) {
+	//compare input to data-answer of that blank
+
+
+	// console.log("this is ", this);
+	console.log("w is ", w);
+
+	// if the value of this inputfield matches the value of this inputfield's data-answer, then :
+	
+
+	//if the same -> console.log("Correct Answer")
+	//else console.log("Wrong Answer")
+	// console.log('checkAnswer worked!!!!!');
+}
+
+function keypress(w) {
+	$("input[name='answer'").keyup(function(e) {
+	var theAnswer = $(this).attr('data-answer');
+	var theKeyword = $(this).val();
+	console.log("theAnswer = ", theAnswer);
+	console.log("theKeyword = ", theKeyword);
+
+	// if theAnswer == theKeyword
+		// console.log("this is ",this);
+		// console.log("e is ", e);
+		// checkAnswer(w);
+		//console.log("KEYPRESS!");
+	});
+}
+
+keypress('w');
+
+// keypress(wordOut);
 
 
 
-
-
+});
