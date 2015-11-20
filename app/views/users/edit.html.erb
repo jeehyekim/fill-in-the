@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Edit Profile</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
+          <h2><%= @user.username %></h2>
+          <h6>Upload a different photo...</h6>
+          
+          <input type="file" class="form-control">
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <h3>Personal info</h3>
+        <%= form_for @user do |f| %>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "form-control" %>
+          <br>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "form-control" %>
+          <br>
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+          <br>
+          <!-- <div class="text-right"> -->
+            <%= f.submit "Update" %>
+          </div>
+        <% end %>          
+      </div>
+  </div>
+</div>
+<hr>
