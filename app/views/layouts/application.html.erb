@@ -3,10 +3,11 @@
 <head>
   <title>Project2</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+  <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700|Noto+Serif:400,700' rel='stylesheet' type='text/css'>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <!-- // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script> -->
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,23 +16,19 @@
 <body>
 
   <!-- NAVBAR -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar ">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="/">Home</a>
-	    </div>
+      </div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
+	      <a class="navbar-brand" href="/">Fill in The</a>
 	      <ul class="nav navbar-nav navbar-right">
 	      	
+	      	<li><%= link_to "Create Quiz", new_quiz_path, class:"pull-right" %></li>
+
 	      	<% if current_user.blank? %>
 		        <li><%= link_to "Sign Up", new_user_path, class:"pull-right" %></li>
 		        <li><%= link_to "Log In", new_session_path, class:"pull-right" %></li>
@@ -48,6 +45,20 @@
 	</nav>
   
 	<%= yield %>
+  
+<!--   <div id="footer" class="footer">
+      <div class="text-center">
+         <p class="footerColor" &copy; Copyright Fill in The ___ 2015 <br />
+          </p>
+      </div>
+      <p class="social-list">
+          <a href="#"><i class="fa fa-facebook fa-fw"></i></a>
+          <a href="#"><i class="fa fa-instagram fa-fw"></i></a>
+          <a href="#"><i class="fa fa-twitter fa-fw"></i></a>
+          <a href="#"><i class="fa fa-google-plus fa-fw"></i></a>
+          <a href="#"><i class="fa fa-dribbble fa-fw"></i></a>
+      </p>
+  </div> -->
 
 </body>
 </html>
