@@ -15,23 +15,19 @@
       </div>
       
       <!-- edit form column -->
-      <div class="col-md-9 personal-info">
+      <div class="col-md-5 col-md-offset-1 personal-info">
         <h3>Personal info</h3>
         <%= form_for @user, html: { multipart: true } do |f| %>
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, class: "form-control" %>
+          <%= f.file_field :image, class: "form-control", placeholder: 'PROFILE PICTURE' %>
           <br>
-          <%= f.label :image %>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.text_field :first_name, class: "form-control", placeholder: 'FIRST NAME' %>
           <br>
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: "form-control" %>
+          <%= f.text_field :last_name, class: "form-control", placeholder: 'LAST NAME' %>
           <br>
-          <%= f.label :email %>
-          <%= f.text_field :email, class: "form-control" %>
+          <%= f.text_field :email, class: "form-control", placeholder: 'EMAIL' %>
           <br>
           <!-- <div class="text-right"> -->
-            <%= f.submit "Update" %>
+            <%= f.submit "Update", class: 'btn' %>
           </div>
         <% end %>          
       </div>
