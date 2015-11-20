@@ -99,13 +99,19 @@ function checkAnswer(w) {
 }
 
 function keypress(w) {
-	$("input[name='answer'").keyup(function(e) {
-	var theAnswer = $(this).attr('data-answer');
-	var theKeyword = $(this).val();
-	console.log("theAnswer = ", theAnswer);
-	console.log("theKeyword = ", theKeyword);
+	$("input[name='answer'").keyup(function(e) { //this looks to the input form and checks it against theKeyword after each key is pressed (and lifted up)
+		var theAnswer = $(this).attr('data-answer'); //this saves the word we want to have them type
+		var theKeyword = $(this).val(); // this reads the word they are typing SO FAR (on each keyup)
+		console.log("theAnswer = ", theAnswer);
+		console.log("theKeyword = ", theKeyword);
 
-	// if theAnswer == theKeyword
+	if (theAnswer == theKeyword) {
+		//if answer is correct
+		console.log("you are CORRECT");
+	} else {
+		//if answer is incorrect
+		console.log("you are INCORRECT");
+	}
 		// console.log("this is ",this);
 		// console.log("e is ", e);
 		// checkAnswer(w);
