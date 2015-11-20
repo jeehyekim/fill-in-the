@@ -4,7 +4,7 @@
 			<h1 class="text-center"><%= @quiz.title %></h1>
 			<br>
 			<div id = 'quiz-body'>
-				<%= @quiz.content %>
+				<%= simple_format(@quiz.content) %>
 			</div>
 		</div>
 	</div>
