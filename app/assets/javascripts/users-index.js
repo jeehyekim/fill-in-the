@@ -11,19 +11,27 @@ var addBlockToForm = function(wordOut) {
 	$('.block-stack').append(answerBlock);
 };
 
-var originalString = "Hello, how are you today my name is Noel, nice to meet you.";
-var targetString = 'today nice name meet';
+var originalString = "Neda, today at outcomes I want to make sure I listen well and take a lot of notes.";
+var targetString = 'outcomes lot sure listen Neda notes';
 // var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
 
 
 // this will take a block of text, and turn it into an array of strings with punctuation and caps intact
 var textStringIntoArray = function(string) {
-	var arr = string.split(" ");
-	return arr;
+	var arrT = string.match(/[\w-']+|[^\w]+/g);
+	// console.log(arrT);
+	return arrT;
+};
+
+// this will take a block of text, and turn it into an array of strings with punctuation and caps intact
+var keywordStringIntoArray = function(string) {
+	var arrK = string.split(' ');
+	// console.log(arrK);
+	return arrK;
 };
 
 var buildNestedArray = function(arr, target) {
-	var huntingArray = textStringIntoArray(target); //turns the string of target words into an array of string
+	var huntingArray = keywordStringIntoArray(target); //turns the string of target words into an array of string
 	var outerArray = [];
 	for (i=0; i<huntingArray.length; i+=1) {
 		var temp = arr.indexOf(huntingArray[i]); //saves the index of the target word in the original string as a temp variable
@@ -76,7 +84,7 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 		var numberIn = '|-----' + num + '-----|';
 		var arrBlanked = arr;
 		arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
-		arrJoined = arrBlanked.join(' '); //joined the array back into a string
+		arrJoined = arrBlanked.join(''); //joined the array back into a string
 		// console.log(arrJoined);
 
 		addBlockToForm(wordOut);
@@ -92,10 +100,11 @@ makeBlankedText(originalString, targetString); //seeds our page with info and bl
 //keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
 function keypress() {
 	$("input[name='answer'").keyup(function(e) { //this looks to the input form and checks it against theKeyword after each key is pressed (and lifted up)
-		var theAnswer = $(this).attr('data-answer'); //this saves the word we want to have them type
-		var theKeyword = $(this).val(); // this reads the word they are typing SO FAR (on each keyup)
+		var theAnswer = $(this).attr('data-answer').toLowerCase(); //this saves the word we want to have them type
+		var theKeyword = $(this).val().toLowerCase(); // this reads the word they are typing SO FAR (on each keyup)
 		// console.log("theAnswer = ", theAnswer);
 		// console.log("theKeyword = ", theKeyword);
+		
 
 	if (theAnswer == theKeyword) {
 		//add class to the input field that will turn the glow green via css
