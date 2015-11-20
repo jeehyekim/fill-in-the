@@ -49,3 +49,5 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
+

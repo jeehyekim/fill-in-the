@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
       <!-- left column -->
-      <div class="col-md-3">
+      <div class="navbar-left">
         <div class="text-center">
           <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
           <h6>Upload a different photo...</h6>
@@ -10,21 +10,19 @@
           <h5>joined: <%= @user.created_at %></h5>
         </div>
       </div>
-		<div class="col-sm-4">
-		<h1>Created</h1>
+		<div class="col-sm-4 col-sm-offset-1">
+		<h1 class="text-center">Created</h1>
 			<hr>
 			<% @user.quizzes.each do |quiz| %>
-				<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
-				<li type="none"><%= quiz.content %></li>
+				<li type="none"><h3 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
 				<hr>
 			<% end %>
 		</div>
 		<div class='col-sm-4 taken'>
-		<h1>Taken</h1>
+		<h1 class="text-center">Taken</h1>
 		<hr>
 		<% @user.quizzes.each do |quiz| %>
-			<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
-			<li type="none"><%= quiz.content %></li>
+			<li type="none"><h3 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
 			<hr>
 		<% end %>
 		<div class="col-sm-1">
