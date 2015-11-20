@@ -91,6 +91,12 @@ a.title:hover {
   color: black;
 }
 
+/*left navbar*/
+
+.navigation-left {
+  position: fixed;
+}
+
 
 /*user index page*/
 
@@ -139,6 +145,24 @@ a.title:hover {
   font-weight: 700 !important;
   font-size: 20px !important;
   left:50% !important;
+  padding:5px 10px !important;
+  border-radius: 22px !important;
+  border: 3px solid black !important;
+  color:black !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  background-color: white !important;
+  margin-top: 50px;
+}
+
+.btn:hover {
+  border-radius: 22px;
+  border: 3px solid black !important;
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  padding:5px 10px;
+  background-color: white;
 }
 
 .form-control {
@@ -172,30 +196,50 @@ input:-ms-input-placeholder {
 
 input[placeholder] {
    font-weight: bold; 
+   color:black;
 }
 
-#sign-up-btn {
+textarea::-webkit-input-placeholder {
+  color: black !important;
+}
+
+textarea::-moz-placeholder {
+  color: black !important;
+}
+textarea:-moz-placeholder {   /* Older versions of Firefox */
+  color: black !important;
+}
+textarea:-ms-input-placeholder { 
+  color: black !important;
+}
+
+textarea[placeholder] {
+   font-weight: bold; 
+   color:black;
+}
+
+/*#sign-up-btn {
   border-radius: 22px !important;
   border: 3px solid black !important;
   color:black !important;
   font-weight: 700 !important;
   font-size: 20px !important;
-  width: 130px !important;
+  padding:5px 10px;
   background-color: white !important;
   margin-top: 50px;
-}
+}*/
 
-#create-quiz-btn {
+#create-quiz-btn, #create-quiz-home, #create-quiz-show {
   border-radius: 22px;
   border: 3px solid black !important;
   color:black;
   font-weight: 700;
   font-size: 20px;
-  width: 200px;
+  padding:5px 10px;
   background-color: white;
 }
 
-#sign-up-btn:hover, #create-quiz-btn:hover {
+#sign-up-btn:hover, #create-quiz-btn:hover, #create-quiz-btn2:hover {
   background-color: black !important;
   color:white !important;
 }
@@ -206,6 +250,8 @@ input[placeholder] {
   font-family: 'Noto Serif', serif;
   line-height: 2em;
 }
+
+#quiz_content
 
 .save-read {
   position:absolute;
