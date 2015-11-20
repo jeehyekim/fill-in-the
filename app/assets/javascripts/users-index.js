@@ -5,12 +5,9 @@ $(document).ready(function(){
 var answerBlockNumber = 0;
 var addBlockToForm = function(wordOut) {
 
-	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='" + wordOut + "' data-answer='" + wordOut + "'> <button>hint</button> <span class='hint-show'>- - - -</span></div>";
+	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'> <button>hint</button> <span class='hint-show'>- - - -</span></div>";
 	$('.block-stack').append(answerBlock);
-	// answerBlockNumber = answerBlockNumber + 1;
 };
-
-// addBlockToForm();
 
 var originalString = "Hello, how are you today my name is Noel, nice to meet you.";
 var targetString = 'today nice name meet';
@@ -20,7 +17,6 @@ var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
 // this will take a block of text, and turn it into an array of strings with punctuation and caps intact
 var textStringIntoArray = function(string) {
 	var arr = string.split(" ");
-	// console.log(arr);
 	return arr;
 };
 
@@ -60,15 +56,12 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 	var arr = textStringIntoArray(stringContent); //turn content into array of strings
 
 	var target = buildNestedArray(arr, stringKeyWords); //turn keyword string into nested array of keywords with 
-	// debugger;
-	// console.log(arr);
 	for (i=0;i<target.length; i+=1) {
 		var indexOut = target[i][0]; //grabs index from target array
 		console.log("indexOut = ", indexOut);
 		var wordOut = target[i][1]; //grabs word from target array
 		console.log("wordOut = ", wordOut); 
 		var numberIn = '|-----' + num + '-----|';
-		// console.log(numberIn);
 		var arrBlanked = arr;
 		arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
 		arrJoined = arrBlanked.join(' '); //joined the array back into a string
@@ -81,29 +74,16 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 	$('.text-area').append(arrJoined);
 };
 
-makeBlankedText(originalString, targetString);
-
-function checkAnswer(w) {
-	//compare input to data-answer of that blank
+makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 
-	// console.log("this is ", this);
-	console.log("w is ", w);
-
-	// if the value of this inputfield matches the value of this inputfield's data-answer, then :
-	
-
-	//if the same -> console.log("Correct Answer")
-	//else console.log("Wrong Answer")
-	// console.log('checkAnswer worked!!!!!');
-}
-
-function keypress(w) {
+//keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
+function keypress() {
 	$("input[name='answer'").keyup(function(e) { //this looks to the input form and checks it against theKeyword after each key is pressed (and lifted up)
 		var theAnswer = $(this).attr('data-answer'); //this saves the word we want to have them type
 		var theKeyword = $(this).val(); // this reads the word they are typing SO FAR (on each keyup)
-		console.log("theAnswer = ", theAnswer);
-		console.log("theKeyword = ", theKeyword);
+		// console.log("theAnswer = ", theAnswer);
+		// console.log("theKeyword = ", theKeyword);
 
 	if (theAnswer == theKeyword) {
 		//if answer is correct
@@ -112,17 +92,10 @@ function keypress(w) {
 		//if answer is incorrect
 		console.log("you are INCORRECT");
 	}
-		// console.log("this is ",this);
-		// console.log("e is ", e);
-		// checkAnswer(w);
-		//console.log("KEYPRESS!");
 	});
 }
 
-keypress('w');
-
-// keypress(wordOut);
-
+keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
 
 
 });
