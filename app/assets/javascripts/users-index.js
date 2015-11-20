@@ -5,7 +5,9 @@ $(document).ready(function(){
 var answerBlockNumber = 0;
 var addBlockToForm = function(wordOut) {
 
-	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'> <button>hint</button> <span class='hint-show'>- - - -</span></div>";
+	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'>";
+	// later add the code below to the code above to get the hint button back on the forms, when you have time to make it and it;'s functionality'
+	//"<button>hint</button> <span class='hint-show'>- - - -</span></div>";
 	$('.block-stack').append(answerBlock);
 };
 
@@ -34,6 +36,13 @@ var buildNestedArray = function(arr, target) {
 	return outerArray;
 };
 
+var sortNestedArray = function(arr) {
+	// console.log('sortFunction firing');
+	arr.sort(function(a, b) {
+		return a[0] - b[0];
+	});
+	return arr;
+};
 
 var selectRandom = function(num, arr) {
 	for (i=0; i<num; i+=1) {
@@ -56,10 +65,13 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 	var arr = textStringIntoArray(stringContent); //turn content into array of strings
 
 	var target = buildNestedArray(arr, stringKeyWords); //turn keyword string into nested array of keywords with 
+	// sort the nested array 'target' into the nested sorted array 'targetSorted'
+	var targetSorted = sortNestedArray(target);
+
 	for (i=0;i<target.length; i+=1) {
-		var indexOut = target[i][0]; //grabs index from target array
+		var indexOut = targetSorted[i][0]; //grabs index from target array
 		// console.log("indexOut = ", indexOut);
-		var wordOut = target[i][1]; //grabs word from target array
+		var wordOut = targetSorted[i][1]; //grabs word from target array
 		// console.log("wordOut = ", wordOut); 
 		var numberIn = '|-----' + num + '-----|';
 		var arrBlanked = arr;
