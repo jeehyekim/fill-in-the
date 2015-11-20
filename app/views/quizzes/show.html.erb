@@ -4,10 +4,10 @@
 			<h1 class="text-center"><%= @quiz.title %></h1>
 			<br>
 			<div id = 'quiz-body'>
-				<%= @quiz.content %>
+				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
-        <%= link_to current_user.first_name, user_path(current_user), class: "btn btn-primary" %>
+        <%= link_to "Quiz", user_path(current_user), class: "btn btn-primary" %>
       </div>
     </div>
   </div>

@@ -4,11 +4,11 @@ font-family: 'Noto Serif', serif;*/
 * {
   font-family: 'Noto Serif', serif;
 }
-/*
+
 h1 {
   font-weight: 700;
   font-family: 'Crimson Text', serif;
-}*/
+}
 
 /*navbar styling*/
 
@@ -137,13 +137,23 @@ a.title:hover {
   left:50%;
 }
 
-#sign-up-btn, #create-quiz-btn {
+#sign-up-btn {
   border-radius: 22px;
   border: 3px solid black;
   color:black;
   font-weight: 700;
   font-size: 20px;
-  width: 200pxpx;
+  width: 130px;
+  background-color: white;
+}
+
+#create-quiz-btn {
+  border-radius: 22px;
+  border: 3px solid black;
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  width: 200px;
   background-color: white;
 }
 
