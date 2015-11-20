@@ -11,7 +11,7 @@ var addBlockToForm = function(wordOut) {
 
 var originalString = "Hello, how are you today my name is Noel, nice to meet you.";
 var targetString = 'today nice name meet';
-var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
+// var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
 
 
 // this will take a block of text, and turn it into an array of strings with punctuation and caps intact
@@ -25,7 +25,7 @@ var buildNestedArray = function(arr, target) {
 	var outerArray = [];
 	for (i=0; i<huntingArray.length; i+=1) {
 		var temp = arr.indexOf(huntingArray[i]); //saves the index of the target word in the original string as a temp variable
-		console.log("temp = ", temp);
+		// console.log("temp = ", temp);
 		var innerArray = [];
 		innerArray.push(temp); //index
 		innerArray.push(arr[temp]); //index[value]
@@ -58,14 +58,14 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 	var target = buildNestedArray(arr, stringKeyWords); //turn keyword string into nested array of keywords with 
 	for (i=0;i<target.length; i+=1) {
 		var indexOut = target[i][0]; //grabs index from target array
-		console.log("indexOut = ", indexOut);
+		// console.log("indexOut = ", indexOut);
 		var wordOut = target[i][1]; //grabs word from target array
-		console.log("wordOut = ", wordOut); 
+		// console.log("wordOut = ", wordOut); 
 		var numberIn = '|-----' + num + '-----|';
 		var arrBlanked = arr;
 		arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
 		arrJoined = arrBlanked.join(' '); //joined the array back into a string
-		console.log(arrJoined);
+		// console.log(arrJoined);
 
 		addBlockToForm(wordOut);
 		num++;
@@ -86,11 +86,17 @@ function keypress() {
 		// console.log("theKeyword = ", theKeyword);
 
 	if (theAnswer == theKeyword) {
+		//add class to the input field that will turn the glow green via css
+		$(this).addClass('green-glow');
 		//if answer is correct
-		console.log("you are CORRECT");
+		// console.log("you are CORRECT");
 	} else {
+		// make sure green-glow is gone unless the correct answer is entered
+		$(this).removeClass('green-glow');
+		
+
 		//if answer is incorrect
-		console.log("you are INCORRECT");
+		// console.log("you are INCORRECT");
 	}
 	});
 }
