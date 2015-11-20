@@ -8,7 +8,9 @@ class QuizzesController < ApplicationController
 	def create
 		@quiz = Quiz.create(quiz_params)
 		@quiz.user_id = current_user.id
-		
+		# p quiz_params
+		# p "quiz params content is: "
+		# p quiz_params["content"]
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
 		else

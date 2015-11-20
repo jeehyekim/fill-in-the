@@ -94,7 +94,11 @@ var makeBlankedText = function(stringContent, stringKeyWords) {
 	$('.text-area').append(arrJoined);
 };
 
-makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
+//this line is for hardcoded string content and keywords:
+// makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
+
+// this line is for taking in the form's content and keywords:
+// makeBlankedText(quiz_params.content, quiz_params.keyword); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 
 //keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
