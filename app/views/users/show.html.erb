@@ -1,14 +1,17 @@
 <div class="container">
 	<div class="row">
       <!-- left column -->
-      <div class="navbar-left">
-        <div class="text-center">
-          <%= image_tag(@user.image.url(:thumb), :class => "img-circle") %>
-          <h2>Welcome, <%= @user.first_name %></h2>
-          <h5>Joined: <%= @user.created_at %></h5>
-        </div>
-      </div>
-		<div class="col-sm-4 col-sm-offset-1">
+      <div class="col-sm-2">
+	      <div class="navbar-left">
+	        <div class="text-center">
+	          <%= image_tag(@user.image.url(:thumb), :class => "img-circle") %>
+	          <h2><%= @user.first_name %></h2>
+	          <h5>Joined: <%=time_ago_in_words(@user.created_at)%> ago</h5>
+	          <h5><%= link_to "Edit Profile", edit_user_path %></h5>
+	        </div>
+	      </div>
+	    </div>
+		<div class="col-sm-4 created">
 		<h1 class="text-center">Created</h1>
 			<hr>
 			<% @user.quizzes.each do |quiz| %>
@@ -17,15 +20,12 @@
 			<% end %>
 		</div>
 		<div class='col-sm-4 taken'>
-		<h1 class="text-center">Taken</h1>
-		<hr>
-		<% @user.quizzes.each do |quiz| %>
-			<li type="none"><h3 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
+			<h1 class="text-center">Taken</h1>
 			<hr>
-		<% end %>
-		<div class="col-sm-1">
-			<h4>progress</h4>
-		</div>
+			<% @user.quizzes.each do |quiz| %>
+				<li type="none"><h3 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
+				<hr>
+			<% end %>
 		</div>
 	</div>
 </div>

@@ -6,8 +6,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def create
-		@quiz = Quiz.create(quiz_params)
-		@quiz.user_id = current_user.id
+		@quiz = current_user.quizzes.create(quiz_params)
 		
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
@@ -22,8 +21,9 @@ class QuizzesController < ApplicationController
 	end
 
 	private
-		def quiz_params
-			quiz_params = params.require(:quiz).permit(:title, :content, :keyword)
-		end
+
+	def quiz_params
+		quiz_params = params.require(:quiz).permit(:title, :content, :keyword)
+	end
 
 end
