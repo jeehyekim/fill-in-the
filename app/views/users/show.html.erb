@@ -3,11 +3,7 @@
       <!-- left column -->
       <div class="navbar-left">
         <div class="text-center">
-          <% if !@user.image %>
-          <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
-          <% else %>
-          <%= image_tag @user.image.url(:thumb) %>
-          <% end %>
+          <%= image_tag(@user.image.url(:thumb), :class => "img-circle") %>
           <h2>Welcome, <%= @user.first_name %></h2>
           <h5>Joined: <%= @user.created_at %></h5>
         </div>
