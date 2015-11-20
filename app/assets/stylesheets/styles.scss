@@ -1,0 +1,176 @@
+/*font-family: 'Crimson Text', serif;
+font-family: 'Noto Serif', serif;*/
+
+* {
+  font-family: 'Noto Serif', serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-family: 'Crimson Text', serif;
+}
+
+/*navbar styling*/
+
+a.navbar-brand {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  float: left;
+}
+
+a.navbar-brand:hover {
+  color:black;
+}
+
+a.navbar-brand:before {
+  position: absolute;
+  margin: 0 auto;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  content: '';
+  opacity: 0;
+  -webkit-transform: translateY(8px);
+  transition-property: opacity, -webkit-transform;
+  transition-duration: .3s;
+}
+
+a.navbar-brand:hover:before {
+  -webkit-transform: translateY(0);
+  opacity: 1;
+}
+
+div li a {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+
+.navbar-nav > li > a:hover {
+  color:black;
+}
+
+div li:before {
+  position: absolute;
+  margin: 0 auto;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  content: '';
+  opacity: 0;
+  -webkit-transform: translateY(8px);
+  transition-property: opacity, -webkit-transform;
+  transition-duration: .3s;
+}
+
+div li:hover:before {
+   -webkit-transform: translateY(0);
+  opacity: 1;
+}
+
+.main a {
+  font-weight: 700;
+  font-size: 100px;
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+
+a.title:hover {
+  text-decoration: none;
+  color: black;
+}
+
+
+/*user index page*/
+
+.main a:before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: #000;
+  content: '';
+  -webkit-transform: translateY(8px);
+  opacity: 0;
+  transition-property: -webkit-transform, opacity;
+  transition-duration: .3s;
+}
+
+.main a:hover:before {
+  -webkit-transform: translateY(0);
+  opacity: 1;
+}
+
+.quiz-title {
+  font-weight: 700;
+}
+
+.main .nav{
+  font-family: 'Crimson Text', serif;
+  margin-top: 100px;
+}
+
+.title {
+  padding-bottom: 60px;
+}
+
+.main p {
+  font-size: 20px;
+}
+
+#quiz-button {
+  margin-top: 200px;
+}
+
+.btn {
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  left:50%;
+}
+
+#sign-up-btn {
+  border-radius: 22px;
+  border: 3px solid black;
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  width: 130px;
+  background-color: white;
+}
+
+#create-quiz-btn {
+  border-radius: 22px;
+  border: 3px solid black;
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  width: 200px;
+  background-color: white;
+}
+
+#sign-up-btn:hover, #create-quiz-btn:hover {
+  background-color: black;
+  color:white;
+}
+
+#quiz-body {
+  font-size: 16px; 
+  font-family: 'Noto Serif', serif;
+  line-height: 2em;
+}
+
+.save-read {
+  position:absolute;
+  left:50%;
+  margin-top: 40px;
+  margin-bottom: 200px;
+}
