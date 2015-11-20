@@ -3,10 +3,10 @@
 <div class="col-sm-4 col-sm-offset-4">
   <%= form_for :user, url: '/users' do |f| %>
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, class:"form-control" %>
+    <%= f.text_field :first_name, class: "form-control" %>
     <br>
     <%= f.label :last_name %>
-    <%= f.text_field :last_name, class:"form-control" %>
+    <%= f.text_field :last_name, class: "form-control" %>
     <br>
     <%= f.label :username %>
     <%= f.text_field :username, class: "form-control" %>
@@ -18,7 +18,7 @@
     <%= f.password_field :password, class: "form-control" %>
     <br>
     <div class="text-right">
-      <%= f.submit "Sign Up", class:"btn btn-primary" %>
+      <%= f.submit "Sign Up", class: "btn btn-primary" %>
     </div>
   <% end %>  
 </div>
