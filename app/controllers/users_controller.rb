@@ -44,7 +44,7 @@ private
   end
 
   def user_params_edit
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :image)
   end
 
 end

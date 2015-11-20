@@ -3,9 +3,11 @@
       <!-- left column -->
       <div class="navbar-left">
         <div class="text-center">
+          <% if !@user.image %>
           <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          <input type="file" class="form-control">
+          <% else %>
+          <%= image_tag @user.image.url(:thumb) %>
+          <% end %>
           <h2>Welcome, <%= @user.first_name %></h2>
           <h5>Joined: <%= @user.created_at %></h5>
         </div>
