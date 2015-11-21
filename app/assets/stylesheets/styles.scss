@@ -83,7 +83,6 @@ div li:hover:before {
   font-size: 100px;
   text-decoration: none;
   color: black;
-  position: relative;
 }
 
 a.title:hover {
@@ -137,7 +136,7 @@ a.title:hover {
 }
 
 #quiz-button {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .btn {
@@ -260,4 +259,7 @@ textarea[placeholder] {
   margin-bottom: 200px;
 }
 
+.all-quizzes {
+  height: 150px;
+}
 
