@@ -2,23 +2,30 @@
 	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<h1 class="text-center"><%= @quiz.title %></h1>
-			<h3 class="text-center">By: <%= User.find(@quiz.user_id).first_name %>
-			<%= User.find(@quiz.user_id).last_name %></h3>
+			<h4 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
+			<%= User.find(@quiz.user_id).last_name %></h4>
 			<br>
-			<div id = 'quiz-body'>
+        <div class="edit-delete text-center">
+          <%= link_to "", edit_quiz_path(@quiz), class: "glyphicon glyphicon-edit", style: "margin-right: 10px" %>
+          <%= link_to "", quiz_path(@quiz), method: :delete, class: "glyphicon glyphicon-trash" %>
+        </div>
+        <br>
+			<div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
-        <!-- <%= link_to "Quiz", user_path(current_user), class: "btn btn-primary" %> -->
-        <button class="btn btn-primary" id="quiz-btn">Create Quiz</button>
+        <button class="btn btn-primary pull-right" id="quiz-btn">Create Quiz</button>
       </div>
     </div>
   </div>
 </div>
 
+
+
+
 <!-- below will show the blanked content and the input fields for answers -->
+
 <div class="row" id="altered-original">
-	<hr>
 	<div class="col-xs-6">
 		<div class="text-area">
 		</div>	
@@ -31,6 +38,9 @@
 		</form>		
 	</div>
 </div>
+
+
+
 <script>
 
 	$(document).ready(function(){
@@ -85,15 +95,17 @@
 		return arr;
 	};
 
-	var selectRandom = function(num, arr) {
+	var randomSelect = function(num, string) {
+		var contentArray = textStringIntoArray(string);
 		for (i=0; i<num; i+=1) {
 			// selects and holds onto a random number
-			var rando = Math.floor(Math.random() * arr.length);
+			var rando = Math.floor(Math.random() * contentArray.length);
 			console.log(rando); //this is the index of the removed item
-			console.log(arr[rando]); //this is the value of the removed item
+			console.log(contentArray[rando]); //this is the value of the removed item
 		}
 	};
 
+randomSelect(3, originalString);
 
 	var num = 1;
 
@@ -147,14 +159,14 @@
 			//add class to the input field that will turn the glow green via css
 			$(this).addClass('green-glow');
 			//if answer is correct
-			console.log("you are CORRECT");
+			// console.log("you are CORRECT");
 		} else {
 			// make sure green-glow is gone unless the correct answer is entered
 			$(this).removeClass('green-glow');
 			
 
 			//if answer is incorrect
-			console.log("you are INCORRECT");
+			// console.log("you are INCORRECT");
 		}
 		});
 	}
