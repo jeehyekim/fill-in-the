@@ -47,7 +47,7 @@ a.navbar-brand:hover:before {
   opacity: 1;
 }
 
-div li a {
+div.navbar-collapse li a {
   font-weight: 700;
   text-decoration: none;
   color: black;
@@ -58,7 +58,7 @@ div li a {
   color:black;
 }
 
-div li:before {
+div.navbar-collapse li:before {
   position: absolute;
   margin: 0 auto;
   top: 100%;
@@ -73,7 +73,7 @@ div li:before {
   transition-duration: .3s;
 }
 
-div li:hover:before {
+div.navbar-collapse li:hover:before {
    -webkit-transform: translateY(0);
   opacity: 1;
 }
@@ -137,7 +137,7 @@ a.title:hover {
 }
 
 #quiz-button {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .btn {
@@ -152,7 +152,7 @@ a.title:hover {
   font-weight: 700 !important;
   font-size: 20px !important;
   background-color: white !important;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .btn:hover {
@@ -218,17 +218,6 @@ textarea[placeholder] {
    color:black;
 }
 
-/*#sign-up-btn {
-  border-radius: 22px !important;
-  border: 3px solid black !important;
-  color:black !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  padding:5px 10px;
-  background-color: white !important;
-  margin-top: 50px;
-}*/
-
 #create-quiz-btn, #create-quiz-home, #create-quiz-show {
   border-radius: 22px;
   border: 3px solid black !important;
@@ -251,13 +240,25 @@ textarea[placeholder] {
   line-height: 2em;
 }
 
-#quiz_content
-
 .save-read {
-  position:absolute;
+  // position:absolute;
   left:50%;
   margin-top: 40px;
   margin-bottom: 200px;
+  clear: both;
 }
 
+h4.quiz-title > a{
+  text-transform: none;
+  color:black;
+}
+
+h4.quiz-title:hover > a{
+  color:black !important;
+}
+
+div.edit-delete > a{
+  color:black;
+  text-decoration: none;
+}
 

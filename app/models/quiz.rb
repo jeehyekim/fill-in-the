@@ -3,7 +3,6 @@ class Quiz < ActiveRecord::Base
 	has_many :users, through: :userquizzes
 	belongs_to :users
 
-
 	validates :content, presence: true
 	validates :title, presence: true
 	validates :keyword, presence: true
