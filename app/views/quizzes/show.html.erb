@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row">
+	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<h1 class="text-center"><%= @quiz.title %></h1>
 			<br>
@@ -7,14 +7,15 @@
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
-        <%= link_to "Quiz", user_path(current_user), class: "btn btn-primary" %>
+        <!-- <%= link_to "Quiz", user_path(current_user), class: "btn btn-primary" %> -->
+        <button class="btn btn-primary" id="quiz-btn">Create Quiz</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- below will show the blanked content and the input fields for answers -->
-<div class="row">
+<div class="row" id="altered-original">
 	<hr>
 	<div class="col-xs-6">
 		<div class="text-area">
@@ -29,7 +30,6 @@
 	</div>
 </div>
 <script>
-	console.log('woo');
 
 	$(document).ready(function(){
 
@@ -158,9 +158,14 @@
 	}
 
 	keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
-
-
+	
+	$("#quiz-btn").on('click', function() {
+		$("#original").hide();
+		$("#altered-original").show();
 	});
+
+
+}); // document.ready
 
 
 </script>
