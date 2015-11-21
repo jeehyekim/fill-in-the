@@ -85,15 +85,17 @@
 		return arr;
 	};
 
-	var selectRandom = function(num, arr) {
+	var randomSelect = function(num, string) {
+		var contentArray = textStringIntoArray(string);
 		for (i=0; i<num; i+=1) {
 			// selects and holds onto a random number
-			var rando = Math.floor(Math.random() * arr.length);
+			var rando = Math.floor(Math.random() * contentArray.length);
 			console.log(rando); //this is the index of the removed item
-			console.log(arr[rando]); //this is the value of the removed item
+			console.log(contentArray[rando]); //this is the value of the removed item
 		}
 	};
 
+randomSelect(3, originalString);
 
 	var num = 1;
 
@@ -147,14 +149,14 @@
 			//add class to the input field that will turn the glow green via css
 			$(this).addClass('green-glow');
 			//if answer is correct
-			console.log("you are CORRECT");
+			// console.log("you are CORRECT");
 		} else {
 			// make sure green-glow is gone unless the correct answer is entered
 			$(this).removeClass('green-glow');
 			
 
 			//if answer is incorrect
-			console.log("you are INCORRECT");
+			// console.log("you are INCORRECT");
 		}
 		});
 	}
