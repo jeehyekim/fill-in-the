@@ -1,4 +1,4 @@
 class Enrichment < ActiveRecord::Base
-  belongs_to :user_creator
-  belongs_to :quiz
+	belongs_to :quiz
+	belongs_to :user
 end
