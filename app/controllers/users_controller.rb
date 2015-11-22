@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @quizzes = Quiz.limit(8)
     @users = User.all
     render :index
   end
