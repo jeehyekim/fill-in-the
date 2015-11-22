@@ -14,7 +14,7 @@
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
-        <button class="btn btn-primary pull-right" id="quiz-btn">Create Quiz</button>
+        <button class="btn btn-primary pull-right" id="quiz-btn">Take Quiz</button>
       </div>
     </div>
   </div>
@@ -84,14 +84,16 @@
 	var buildNestedArray = function(arr, target) {
 		var huntingArray = keywordStringIntoArray(target); //turns the string of target words into an array of string
 		var outerArray = [];
-		for (i=0; i<huntingArray.length; i+=1) {
-			var temp = arr.indexOf(huntingArray[i]); //saves the index of the target word in the original string as a temp variable
-			// console.log("temp = ", temp);
-			var innerArray = [];
-			innerArray.push(temp); //index
-			innerArray.push(arr[temp]); //index[value]
-			outerArray.push(innerArray); //push inner(tiny)array into outer array
+		for (i=0; i<arr.length; i+=1) {
+			for (j = 0; j<huntingArray.length; j+=1) {
+				if (huntingArray[j] == arr[i]) {
+					result = [i, huntingArray[j]];
+					outerArray.push(result);
+					console.log("result = ", result);
+				}
+			}
 		}
+		console.log("outerArray = ", outerArray);
 		return outerArray;
 	};
 
@@ -215,10 +217,10 @@ numR = 1;
 	// makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 	// this line is for taking in the form's content and keywords:
-	// makeBlankedText("<%= @quiz.content %>", "<%= @quiz.keyword %>"); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
+	makeBlankedText("<%= @quiz.content %>", "<%= @quiz.keyword %>"); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 	// this line is to trigger the RANDOM Version
-	randBlankedText(3, "<%= @quiz.content %>");
+	// randBlankedText(3, "<%= @quiz.content %>");
 
 
 	//keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
