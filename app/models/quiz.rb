@@ -1,9 +1,6 @@
 class Quiz < ActiveRecord::Base
-	# serialize :keywords, Array
-  # has_many :userquizzes
-	# has_many :users, through: :userquizzes
-	belongs_to :user
-
+  has_many :enrichments
+  has_many :users, through: :enrichments
 
 	validates :content, presence: true
 	validates :title, presence: true

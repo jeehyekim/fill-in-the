@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-	has_many :quizzes
+  has_many :enrichments
+  has_many :quizzes, through: :enrichments
+
   has_secure_password
 
   # @user.authenticate("password") => user || false
