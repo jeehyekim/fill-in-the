@@ -14,7 +14,8 @@ form {
   margin-top: 100px;
 }
 
-/*navbar styling*/
+
+// NAVBAR STYLING
 
 a.navbar-brand {
   text-decoration: none;
@@ -54,10 +55,6 @@ div.navbar-collapse li a {
   position: relative;
 }
 
-.navbar-nav > li > a:hover {
-  color:black;
-}
-
 div.navbar-collapse li:before {
   position: absolute;
   margin: 0 auto;
@@ -78,43 +75,49 @@ div.navbar-collapse li:hover:before {
   opacity: 1;
 }
 
-.main a {
-  font-weight: 700;
-  font-size: 100px;
-  text-decoration: none;
-  color: black;
-  position: relative;
-}
 
-a.title:hover {
-  text-decoration: none;
-  color: black;
-}
 
-/*left navbar*/
 
+// LEFT NAVBAR
 .navigation-left {
   position: fixed;
 }
 
 
-/*user index page*/
+// USER INDEX PAGE 
 
-.main a:before {
+// .title {
+// }
+
+.main > a.title {
+  padding-bottom: 60px;
+  font-weight: 700;
+  font-size: 100px;
+  text-decoration: none;
+  color: black;
+}
+
+.main > a.title:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.main > a.title:before {
   position: absolute;
+  margin: 0 auto;
   top: 100%;
   left: 0;
   width: 100%;
-  height: 6px;
+  height: 2px;
   background-color: #000;
   content: '';
-  -webkit-transform: translateY(8px);
   opacity: 0;
-  transition-property: -webkit-transform, opacity;
+  -webkit-transform: translateY(8px);
+  transition-property: opacity, -webkit-transform;
   transition-duration: .3s;
 }
 
-.main a:hover:before {
+.main > a.title:hover:before {
   -webkit-transform: translateY(0);
   opacity: 1;
 }
@@ -128,42 +131,12 @@ a.title:hover {
   margin-top: 100px;
 }
 
-.title {
-  padding-bottom: 60px;
-}
-
-.main p {
-  font-size: 20px;
-}
-
-#quiz-button {
+.row {
   margin-top: 100px;
 }
 
-.btn {
-  color:black !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  left:50% !important;
-  padding:5px 10px !important;
-  border-radius: 22px !important;
-  border: 3px solid black !important;
-  color:black !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  background-color: white !important;
-  margin-top: 40px;
-}
 
-.btn:hover {
-  border-radius: 22px;
-  border: 3px solid black !important;
-  color:black;
-  font-weight: 700;
-  font-size: 20px;
-  padding:5px 10px;
-  background-color: white;
-}
+// TEXT AREA + INPUT AREAS 
 
 .form-control {
   border-radius: 0px !important;
@@ -218,21 +191,34 @@ textarea[placeholder] {
    color:black;
 }
 
-#create-quiz-btn, #create-quiz-home, #create-quiz-show {
+
+// BUTTON STYLING 
+
+.btn {
+  color:black !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  left:50% !important;
+  padding:5px 10px !important;
+  border-radius: 22px !important;
+  border: 3px solid black !important;
+  color:black !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  background-color: white !important;
+  margin-top: 40px;
+}
+
+.btn:hover {
   border-radius: 22px;
   border: 3px solid black !important;
   color:black;
   font-weight: 700;
   font-size: 20px;
   padding:5px 10px;
-  background-color: white;
-}
-
-#sign-up-btn:hover, #create-quiz-btn:hover, #create-quiz-btn2:hover {
   background-color: black !important;
   color:white !important;
 }
-
 
 #quiz-body {
   font-size: 16px; 
@@ -240,8 +226,11 @@ textarea[placeholder] {
   line-height: 2em;
 }
 
+#quiz-button {
+  margin-top: 100px;
+}
+
 .save-read {
-  // position:absolute;
   left:50%;
   margin-top: 40px;
   margin-bottom: 200px;
@@ -257,8 +246,20 @@ h4.quiz-title:hover > a{
   color:black !important;
 }
 
-div.edit-delete > a{
-  color:black;
+.all-quizzes {
+  height: 150px;
+}
+
+
+// EDIT AND DELETE BUTTONS
+
+.edit-delete > a {
+  color: black;
+  text-decoration: none;
+}
+
+.edit-delete > a:hover {
+  color: black;
   text-decoration: none;
 }
 

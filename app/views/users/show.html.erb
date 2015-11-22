@@ -2,13 +2,14 @@
       <!-- left column -->
       <div class="col-md-3 hidden-sm hidden-xs">
         <div class="text-center navigation-left">
-          <% if !@user.image %>
+          <% if @user.image == nil %>
             <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
           <% else %>
            <%= image_tag @user.image.url(:thumb) %>
           <% end %>
           <h2>Welcome, <%= @user.first_name %></h2>
-          <h5>Joined: <%= @user.created_at %></h5>
+          <h5>Joined: <%= time_ago_in_words(@user.created_at) %> ago</h5>
+          <h5><%= link_to "Edit Profile", edit_user_path(@user) %></h5>
         </div>
       </div>
 
