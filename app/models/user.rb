@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :enrichments
-  has_many :quizzes, through: :enrichments
+  has_many :created_quizzes, :foreign_key => "creator_id", :class_name => "Quiz"
+  has_many :enrichments, :foreign_key => :quiz_test_id
+  has_many :tested_quizzes, :through => :enrichments
 
   has_secure_password
 

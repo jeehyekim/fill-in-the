@@ -1,6 +1,7 @@
 class Quiz < ActiveRecord::Base
-  has_many :enrichments
-  has_many :users, through: :enrichments
+  belongs_to :creator, :class_name => "User"
+  has_many :enrichments, :foreign_key => :tested_quiz_id
+  has_many :testers, :through => :enrichments, :source => :quiz_tester
 
 	validates :content, presence: true
 	validates :title, presence: true
