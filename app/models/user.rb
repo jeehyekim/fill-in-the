@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :quizzes, dependent: :destroy
-	has_many :quizzes, through: :userquizzes
+	has_many :quizzes
   has_secure_password
 
   # @user.authenticate("password") => user || false
