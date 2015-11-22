@@ -3,9 +3,9 @@
       <div class="col-md-3 hidden-sm hidden-xs">
         <div class="text-center navigation-left">
           <% if !@user.image %>
-          <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
+            <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
           <% else %>
-          <%= image_tag @user.image.url(:thumb) %>
+           <%= image_tag @user.image.url(:thumb) %>
           <% end %>
           <h2>Welcome, <%= @user.first_name %></h2>
           <h5>Joined: <%= @user.created_at %></h5>
