@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20151122213650) do
     t.datetime "updated_at", null: false
     t.string   "keyword"
     t.integer  "user_id"
+    t.integer  "random"
+    t.string   "typeOfForm"
+  end
+
+  create_table "user_quizzes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "quiz_id"
   end
 
   create_table "users", force: :cascade do |t|
