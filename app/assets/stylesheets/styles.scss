@@ -6,9 +6,27 @@ font-family: 'Noto Serif', serif;*/
   font-family: 'Noto Serif', serif;
 }
 
-h1 {
+h2 {
   font-weight: 700 !important;
   font-family: 'Crimson Text', serif;
+}
+
+h5, h5 a {
+  font-family: 'Cabin', sans-serif !important;
+}
+
+h4 a {
+  font-family: 'Cabin', sans-serif !important;
+  // padding-bottom: 20px !important;
+}
+
+h5 a {
+  color: black;
+}
+
+
+li p {
+  font-family: 'Cabin', sans-serif !important;
 }
 
 form {
@@ -156,7 +174,7 @@ input, textarea {
   color:black;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Cabin', sans-serif !important;
   border-top: 0px solid transparent !important;
   border-left: 0px solid transparent !important;
   border-right: 0px solid transparent !important;
@@ -208,7 +226,8 @@ textarea[placeholder] {
 .btn {
   color:black !important;
   font-weight: 700 !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
+  font-family: 'Noto Serif', serif !important;
   left:50% !important;
   padding:5px 10px !important;
   border-radius: 22px !important;
@@ -235,7 +254,7 @@ textarea[placeholder] {
    outline: none !important;
 }
 
-#quiz-body {
+#quiz-body p {
   font-size: 16px; 
   font-family: 'Cabin', sans-serif !important;
   line-height: 2em;
