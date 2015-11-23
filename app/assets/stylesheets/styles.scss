@@ -12,7 +12,7 @@ h2 {
 }
 
 h5, h5 a {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Cabin', sans-serif !important;
 }
 
 h4 a {
@@ -20,9 +20,10 @@ h4 a {
   // padding-bottom: 20px !important;
 }
 
-li {
-  text-decoration: none;
+h5 a {
+  color: black;
 }
+
 
 li p {
   font-family: 'Cabin', sans-serif !important;
@@ -225,7 +226,7 @@ textarea[placeholder] {
 .btn {
   color:black !important;
   font-weight: 700 !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-family: 'Noto Serif', serif !important;
   left:50% !important;
   padding:5px 10px !important;
@@ -253,9 +254,9 @@ textarea[placeholder] {
    outline: none !important;
 }
 
-#quiz-body {
+#quiz-body p {
   font-size: 16px; 
-  // font-family: 'Cabin', sans-serif !important;
+  font-family: 'Cabin', sans-serif !important;
   line-height: 2em;
 }
 

@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-			<h1 class="text-center quiz" id="<%= @quiz.id %>"><%= @quiz.title %></h1>
-			<h4 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
+			<h2 class="text-center quiz" id="<%= @quiz.id %>"><%= @quiz.title %></h2>
+			<h5 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
 			<%= User.find(@quiz.user_id).last_name %></h4>
 			<br>
         <div class="edit-delete text-center">
@@ -23,18 +23,14 @@
 
 <!-- below will show the blanked content and the input fields for answers -->
 
-<div class="row" id="altered-original" style="display:none">
-	<div class="col-xs-6">
+<div class="col-xs-12 col-sm-6 col-sm-offset-3" id="altered-original" style="display:none">
 		<div class="text-area">
 		</div>	
-	</div>
-	<div class="col-xs-6">
 		<form class="my-form" id="target-form">
 			<div class="block-stack">
 			</div>
+    </form>   
 			<button class="btn">Submit</button>
-		</form>		
-	</div>
 </div>
 
 
@@ -46,7 +42,7 @@
 	var answerBlockNumber = 0;
 	var addBlockToForm = function(wordOut) {
 
-		var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'>";
+		var answerBlock = "<div class='blanks-and-hints text-center'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'>";
 		// later add the code below to the code above to get the hint button back on the forms, when you have time to make it and it;'s functionality'
 		//"<button>hint</button> <span class='hint-show'>- - - -</span></div>";
 		$('.block-stack').append(answerBlock);
