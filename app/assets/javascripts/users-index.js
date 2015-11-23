@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	// this click event on #quiz-btn hides the original text and displays the blanked out text when 'take quiz' button is clicked
 	$('#quiz-btn').on('click', function(e) {
+		console.log("quiz button clicked");
 		e.preventDefault();
 		// hides the top div and shows the bottom div
 		document.getElementById('original').style.display = "none";
@@ -119,6 +120,7 @@ $(document).ready(function(){
 		var arr = stringContent.match(/[\w-']+|[^\w]+/g);
 		var nestedArrSorted = sortNestedArray(nestedArr);
 		var num = 1;
+		var arrJoined;
 		for (i=0;i<nestedArr.length; i+=1) {
 			var indexOut = nestedArrSorted[i][0]; //grabs index from target array
 			var wordOut = nestedArrSorted[i][1]; //grabs word from target array
@@ -200,3 +202,4 @@ $(document).ready(function(){
 		}
 		});
 	}
+
