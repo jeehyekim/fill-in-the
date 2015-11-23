@@ -8,6 +8,7 @@ $(document).ready(function(){
 		// this will also need to associate the current user user_id with the current quiz_id to the Enrichment join table, complete status will be default incomplete		
 		var data = {quiz_id: $('.quiz').attr('id'),
 								user_id: $('.current_user').attr('id')};
+
 		$.ajax({
 			type: 'POST',
 			url: '/quizzes/' + data.quiz_id + '/enrichments',
@@ -16,6 +17,8 @@ $(document).ready(function(){
 		}).done(function(response){
 			console.log(response.enrichment);
 		});
+
+
 	}); //this closes the #quiz-btn click event
 
 	// this click event on im done button will check that all the fields are correct, then handle eventualities
