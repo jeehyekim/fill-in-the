@@ -34,7 +34,7 @@
 		<form class="my-form" id="target-form">
 			<div class="block-stack">
 			</div>
-			<button>Submit</button>
+			<button class="btn btn-primary" id="im-done">I'm Done!</button>
 		</form>		
 	</div>
 </div>
@@ -50,16 +50,24 @@
 		keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
 	}); // document.ready
 
+	var randomWordMinSize = 3;
+
 	// buildNestedArray takes in an array of text and a target string of keywords and builds a nested array of [index, 'word'] arrays that are used in the larger functions.	
 	var buildNestedArray = function(stringContent, stringKeyWords) {
 		var huntingArray = stringKeyWords.split(' ');
-		// remove any words with apostrophes from the huntingArray
 		for (i=0; i<huntingArray.length; i+=1) {
+			// remove any words with apostrophes from the huntingArray
 			if (huntingArray[i].indexOf('\'') >= 0) {
 				huntingArray.splice( i, 1);
+			} else {
+				// checks to see if there are double words in huntingArray, and if so, removes them here.
+				for (j=0; j<huntingArray.length; j+=1) {
+					if (huntingArray[i] == huntingArray[j]) {
+						huntingArray.splice( j, 1);
+					}
+				}
 			}
 		}
-
 		var contentArray = stringContent.match(/[\w-']+|[^\w]+/g);
 		var outerArray = [];
 		for (i=0; i<contentArray.length; i+=1) {
@@ -73,8 +81,6 @@
 		}
 		return outerArray;
 	};
-
-	var randomWordMinSize = 3;
 
 	// this builds a nested array of the randomly selected words and their index in the array. It also checks to make sure they are longer than a set length and have not already been selected previously.
 	var randomNestedBuild = function(num, string) {
@@ -136,7 +142,7 @@
 		for (i=0;i<nestedArr.length; i+=1) {
 			var indexOut = nestedArrSorted[i][0]; //grabs index from target array
 			var wordOut = nestedArrSorted[i][1]; //grabs word from target array
-			var numberIn = "<input type='text' name='answer' placeholder='" + num + "' data-answer='" + wordOut + "'>";
+			var numberIn = "<input type='text' name='answer' class='quiz-blank' placeholder='" + num + "' data-answer='" + wordOut + "'>";
 			var arrBlanked = arr;
 			arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
 			arrJoined = arrBlanked.join(''); //joined the array back into a string
@@ -206,11 +212,13 @@
 			var theAnswer = $(this).attr('data-answer').toLowerCase(); //this saves the word we want to have them type
 			var theKeyword = $(this).val().toLowerCase(); // this reads the word they are typing SO FAR (on each keyup)
 		if (theAnswer == theKeyword) {
-			//add class to the input field that CORRECT ANSWER will turn the glow green via css
+			//add class to the input field that CORRECT ANSWER will turn the glow green via css red class for incorrect answer will be removed if present
+			$(this).removeClass('red-glow');
 			$(this).addClass('green-glow');
 		} else {
-			// make sure green-glow is gone unless the correct answer is entered
+			// make sure green-glow is gone unless the correct answer is entered. red class for incorrect answer will be removed if present
 			$(this).removeClass('green-glow');
+			$(this).removeClass('red-glow');
 		}
 		});
 	}
