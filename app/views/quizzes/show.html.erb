@@ -50,7 +50,7 @@
 
 		// this line is to trigger the RANDOM Version
 		// randBlankedText(3, "<%= @quiz.content %>");	
-		
+
 		keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
 	}); // document.ready
 
@@ -73,22 +73,22 @@
 
 	// this builds a nested array of the randomly selected words and their index in the array. It also checks to make sure they are longer than a set length and have not already been selected previously.
 	var randomNestedBuild = function(num, string) {
-		var contentArray = textStringIntoArray(string);
+		var contentArray = string.match(/[\w-']+|[^\w]+/g);
 		var selectedWords = [];
 		for (i=0; selectedWords.length<num; i+=1) {
 		    var selected = pickANumber(contentArray);
 		    
 		    if (contentArray[selected].length < 3) {
-		        console.log("selected is ", selected );
-		        console.log("selected word is ", contentArray[selected] );
+		        // console.log("selected is ", selected );
+		        // console.log("selected word is ", contentArray[selected] );
 		        console.log("too short");
 		    } else if (alreadyInArray(selected, selectedWords)) {
-		        console.log("selected is ", selected);
-		        console.log("selected word is ", contentArray[selected]);
+		        // console.log("selected is ", selected);
+		        // console.log("selected word is ", contentArray[selected]);
 		        console.log("this word has already been randomly selected previously.");
 		    } else {
-		        console.log("selected is ", selected );
-		        console.log("selected word is ", contentArray[selected] );
+		        // console.log("selected is ", selected );
+		        // console.log("selected word is ", contentArray[selected] );
 		        console.log("long enough");
 		        var innerArray = [];
 		        innerArray.push(selected);
@@ -123,13 +123,11 @@
 	  }
 	};
 
-	// This variable is to use for the fromNestedArrToDOM  to build the answer blanks.
-	var num = 1;
-
 	// this takes in the string of content and the nested array and then builds the blanked form and appends it to the DOM
 	var fromNestedArrToDOM = function(stringContent, nestedArr) {
 		var arr = stringContent.match(/[\w-']+|[^\w]+/g);
 		var nestedArrSorted = sortNestedArray(nestedArr);
+		var num = 1;
 		for (i=0;i<nestedArr.length; i+=1) {
 			var indexOut = nestedArrSorted[i][0]; //grabs index from target array
 			var wordOut = nestedArrSorted[i][1]; //grabs word from target array
