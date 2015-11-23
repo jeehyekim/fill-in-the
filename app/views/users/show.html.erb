@@ -2,7 +2,7 @@
       <!-- left column -->
       <div class="col-md-3 hidden-sm hidden-xs">
         <div class="text-center navigation-left">
-          <% if !@user.image %>
+          <% if @user.image == nil %>
             <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
           <% else %>
            <%= image_tag @user.image.url(:thumb) %>

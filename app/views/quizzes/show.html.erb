@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-			<h1 class="text-center"><%= @quiz.title %></h1>
+			<h1 class="text-center quiz" id='<%= @quiz.id %>'<%= @quiz.title %></h1>
 			<h4 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
 			<%= User.find(@quiz.user_id).last_name %></h4>
 			<br>
@@ -11,10 +11,11 @@
         </div>
         <br>
 			<div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
+				<p class='current_user' id='<%= @current_user.id %>' style='display:none'></p>
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
-        <button class="btn btn-primary pull-right" id="quiz-btn">Create Quiz</button>
+        <button class="btn btn-primary pull-right" id="quiz-btn">Take Quiz</button>
       </div>
     </div>
   </div>
@@ -25,7 +26,7 @@
 
 <!-- below will show the blanked content and the input fields for answers -->
 
-<div class="row" id="altered-original">
+<div class="row" id="altered-original" style="display:none">
 	<div class="col-xs-6">
 		<div class="text-area">
 		</div>	
@@ -34,7 +35,7 @@
 		<form class="my-form" id="target-form">
 			<div class="block-stack">
 			</div>
-			<button>Submit</button>
+			<button class="btn">Submit</button>
 		</form>		
 	</div>
 </div>
@@ -84,14 +85,16 @@
 	var buildNestedArray = function(arr, target) {
 		var huntingArray = keywordStringIntoArray(target); //turns the string of target words into an array of string
 		var outerArray = [];
-		for (i=0; i<huntingArray.length; i+=1) {
-			var temp = arr.indexOf(huntingArray[i]); //saves the index of the target word in the original string as a temp variable
-			// console.log("temp = ", temp);
-			var innerArray = [];
-			innerArray.push(temp); //index
-			innerArray.push(arr[temp]); //index[value]
-			outerArray.push(innerArray); //push inner(tiny)array into outer array
+		for (i=0; i<arr.length; i+=1) {
+			for (j = 0; j<huntingArray.length; j+=1) {
+				if (huntingArray[j] == arr[i]) {
+					result = [i, huntingArray[j]];
+					outerArray.push(result);
+					console.log("result = ", result);
+				}
+			}
 		}
+		console.log("outerArray = ", outerArray);
 		return outerArray;
 	};
 
@@ -126,13 +129,13 @@
 			// console.log("indexOut = ", indexOut);
 			var wordOut = targetSorted[i][1]; //grabs word from target array
 			// console.log("wordOut = ", wordOut); 
-			var numberIn = '|-----' + num + '-----|';
+			var numberIn = "<input type='text' name='answer' placeholder='" + num + "' data-answer='" + wordOut + "'>";
 			var arrBlanked = arr;
 			arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
 			arrJoined = arrBlanked.join(''); //joined the array back into a string
 			// console.log(arrJoined);
 
-			addBlockToForm(wordOut);
+			// addBlockToForm(wordOut);
 			num++;
 		}
 		// j querrry to throw the text onto the page
@@ -215,10 +218,10 @@ numR = 1;
 	// makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 	// this line is for taking in the form's content and keywords:
-	// makeBlankedText("<%= @quiz.content %>", "<%= @quiz.keyword %>"); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
+	makeBlankedText("<%= @quiz.content %>", "<%= @quiz.keyword %>"); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
 
 	// this line is to trigger the RANDOM Version
-	randBlankedText(3, "<%= @quiz.content %>");
+	// randBlankedText(3, "<%= @quiz.content %>");
 
 
 	//keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
@@ -252,6 +255,20 @@ numR = 1;
 	// 	$("#original").hide();
 	// 	$("#altered-original").show();
 	// });
+	$('#quiz-btn').on('click', function(){
+		var data = {quiz_id: $('.quiz').attr('id'),
+								user_id: $('.current_user').attr('id')}
+
+		$.ajax({
+			type: 'POST',
+			url: '/quizzes/' + data.quiz_id + '/enrichments',
+			datatype: 'JSON',
+			data: data
+		}).done(function(response){
+			console.log(response.enrichment);
+		});
+
+	});
 
 
 }); // document.ready
