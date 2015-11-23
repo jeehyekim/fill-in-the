@@ -26,7 +26,7 @@
           <% @quizzes.each do |quiz| %>
             <div class="col-md-3 col-sm-6 all-quizzes">
               <i class="fa fa-laptop fa-4x"></i>
-              <h3><%= link_to quiz.title, quiz_path(quiz) %></h3>
+              <h2><%= link_to quiz.title, quiz_path(quiz) %></h2>
               <p><%= quiz.content.first(80) %>...</p>
             </div>
           <% end %>

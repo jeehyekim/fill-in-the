@@ -14,9 +14,9 @@
           </div>
         <% end %>
         <br>
-      <div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
-        <p class='current_user' id='<%= @current_user.id %>' style='display:none'></p>
+        <p class='current_user' id='<%= current_user.id %>' style='display:none'></p>
       <% end %>
+        <div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
         <%= simple_format(@quiz.content) %>
       </div>
 
@@ -24,7 +24,7 @@
           <button class="btn btn-primary pull-right" id="quiz-btn">Take Quiz</button>
         </div>
 
-        
+
     </div>
   </div>
 </div>
