@@ -1,146 +1,41 @@
 $(document).ready(function(){
+	// this click event on #quiz-btn hides the original text and displays the blanked out text when 'take quiz' button is clicked
 	$('#quiz-btn').on('click', function(e) {
-		// console.log('Keyword click happeninng');
 		e.preventDefault();
 		// hides the top div and shows the bottom div
 		document.getElementById('original').style.display = "none";
 		document.getElementById('altered-original').style.display = "block";
-	});
-});
+		// this will also need to associate the current user user_id with the current quiz_id to the Enrichment join table, complete status will be default incomplete		
+		var data = {quiz_id: $('.quiz').attr('id'),
+								user_id: $('.current_user').attr('id')};
 
-// console.log('woo');
-
-// $(document).ready(function(){
-
-// var answerBlockNumber = 0;
-// var addBlockToForm = function(wordOut) {
-
-// 	var answerBlock = "<div class='blanks-and-hints'><span class='blank-number'>" + num + ". </span><input type='text' name='answer' placeholder='Answer Here' data-answer='" + wordOut + "'>";
-// 	// later add the code below to the code above to get the hint button back on the forms, when you have time to make it and it;'s functionality'
-// 	//"<button>hint</button> <span class='hint-show'>- - - -</span></div>";
-// 	$('.block-stack').append(answerBlock);
-// };
-
-// var originalString = "Neda, today at outcomes I want to make sure I listen well and take a lot of notes.";
-// var targetString = 'outcomes lot sure listen Neda notes';
-// // var originalTarget = [[4,'today'], [9, 'nice'], [11, 'meet']];
+		$.ajax({
+			type: 'POST',
+			url: '/quizzes/' + data.quiz_id + '/enrichments',
+			datatype: 'JSON',
+			data: data
+		}).done(function(response){
+			console.log(response.enrichment);
+		});
 
 
-// // this will take a block of text, and turn it into an array of strings with punctuation and caps intact
-// var textStringIntoArray = function(string) {
-// 	var arrT = string.match(/[\w-']+|[^\w]+/g);
-// 	// console.log(arrT);
-// 	return arrT;
-// };
+	}); //this closes the #quiz-btn click event
 
-// // this will take a block of text, and turn it into an array of strings with punctuation and caps intact
-// var keywordStringIntoArray = function(string) {
-// 	var arrK = string.split(' ');
-// 	// console.log(arrK);
-// 	return arrK;
-// };
+	// this click event on im done button will check that all the fields are correct, then handle eventualities
+	$('#im-done').on('click', function(e) {
+		e.preventDefault();
+		// each quiz-blank class input field that does NOT have class green-glow get class red-glow
+		$('.quiz-blank').each( function(i) {
+		    if ( !$(this).hasClass('green-glow') ) {
+	        $(this).addClass('red-glow');
+		    } 
+		});
+		// if the input fields are all gree, it console logs correct, then changes the boolean, and redirects to user profile page
+		if (!$(".quiz-blank").not(".green-glow").length) {
+			console.log("OMG ALL CORRECT");
+			// TODO change boolean of completed on Enrichment join table from false to true
+		  // TODO redirect to the user profile page
+		}
+	}); //this closes the #im-done click event
+}); // this closes the document ready function
 
-// var buildNestedArray = function(arr, target) {
-// 	var huntingArray = keywordStringIntoArray(target); //turns the string of target words into an array of string
-// 	var outerArray = [];
-// 	for (i=0; i<huntingArray.length; i+=1) {
-// 		var temp = arr.indexOf(huntingArray[i]); //saves the index of the target word in the original string as a temp variable
-// 		// console.log("temp = ", temp);
-// 		var innerArray = [];
-// 		innerArray.push(temp); //index
-// 		innerArray.push(arr[temp]); //index[value]
-// 		outerArray.push(innerArray); //push inner(tiny)array into outer array
-// 	}
-// 	return outerArray;
-// };
-
-// var sortNestedArray = function(arr) {
-// 	// console.log('sortFunction firing');
-// 	arr.sort(function(a, b) {
-// 		return a[0] - b[0];
-// 	});
-// 	return arr;
-// };
-
-// var handleRandom = function(num, string) {
-
-	
-// 	for (i=0; i<num; i+=1) {
-// 		// selects and holds onto a random number
-// 		var rando = Math.floor(Math.random() * arr.length);
-// 		console.log(rando); //this is the index of the removed item
-// 		console.log(arr[rando]); //this is the value of the removed item
-// 	}
-// };
-
-
-
-// //this counter is for the blanks that get counted in the function below. It tells the function what number to put in the blank and label the field.
-// var num = 1;
-
-
-
-// // this function builds the blanked text on the page using all the other functions
-// // var makeBlankedText = function(stringContent, stringKeyWords) {
-// var makeBlankedText = function(stringContent, stringKeyWords) {
-
-// 	var arr = textStringIntoArray(stringContent); //turn content into array of strings
-
-// 	var target = buildNestedArray(arr, stringKeyWords); //turn keyword string into nested array of keywords with 
-// 	// sort the nested array 'target' into the nested sorted array 'targetSorted'
-// 	var targetSorted = sortNestedArray(target);
-
-// 	for (i=0;i<target.length; i+=1) {
-// 		var indexOut = targetSorted[i][0]; //grabs index from target array
-// 		// console.log("indexOut = ", indexOut);
-// 		var wordOut = targetSorted[i][1]; //grabs word from target array
-// 		// console.log("wordOut = ", wordOut); 
-// 		var numberIn = '|-----' + num + '-----|';
-// 		var arrBlanked = arr;
-// 		arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
-// 		arrJoined = arrBlanked.join(''); //joined the array back into a string
-// 		// console.log(arrJoined);
-
-// 		addBlockToForm(wordOut);
-// 		num++;
-// 	}
-// 	// j querrry to throw the text onto the page
-// 	$('.text-area').append(arrJoined);
-// };
-
-// //this line is for hardcoded string content and keywords:
-// // makeBlankedText(originalString, targetString); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
-
-// // this line is for taking in the form's content and keywords:
-// // makeBlankedText(quiz_params.content, quiz_params.keyword); //seeds our page with info and blanks, will need to be called on a SUBMIT event in production
-
-
-// //keypress function listens for a keyup in the event and checks the field agains the answer it is expecting, which is stored in that input field's data-answer field
-// function keypress() {
-// 	$("input[name='answer'").keyup(function(e) { //this looks to the input form and checks it against theKeyword after each key is pressed (and lifted up)
-// 		var theAnswer = $(this).attr('data-answer').toLowerCase(); //this saves the word we want to have them type
-// 		var theKeyword = $(this).val().toLowerCase(); // this reads the word they are typing SO FAR (on each keyup)
-// 		// console.log("theAnswer = ", theAnswer);
-// 		// console.log("theKeyword = ", theKeyword);
-		
-
-// 	if (theAnswer == theKeyword) {
-// 		//add class to the input field that will turn the glow green via css
-// 		$(this).addClass('green-glow');
-// 		//if answer is correct
-// 		// console.log("you are CORRECT");
-// 	} else {
-// 		// make sure green-glow is gone unless the correct answer is entered
-// 		$(this).removeClass('green-glow');
-		
-
-// 		//if answer is incorrect
-// 		// console.log("you are INCORRECT");
-// 	}
-// 	});
-// }
-
-// keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
-
-
-// });

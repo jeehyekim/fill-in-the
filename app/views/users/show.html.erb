@@ -8,29 +8,29 @@
            <%= image_tag @user.image.url(:thumb) %>
           <% end %>
           <h2>Welcome, <%= @user.first_name %></h2>
-          <h5>Joined: <%= time_ago_in_words(@user.created_at) %> ago</h5>
+          <h5 style="font-family: 'Cabin', sans-serif;">Joined: <%= time_ago_in_words(@user.created_at) %> ago</h5>
           <h5><%= link_to "Edit Profile", edit_user_path(@user) %></h5>
         </div>
       </div>
-
-
-      <div class="col-md-8 col-md-offset-1">
-    		<div class="col-md-6">
-    		<h1 class="text-center">Created</h1>
-    			<hr>
-    			<% @user.quizzes.each do |quiz| %>
-    				<li type="none"><h4 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h4></li>
-    				<hr>
-    			<% end %>
-    		</div>
-        <div class='col-md-6'>
-    		  <h1 class="text-center">Taken</h1>
-    		  <hr>
-    		  <% @user.quizzes.each do |quiz| %>
-    		  	<li type="none"><h4 class="quiz-title"><%= link_to quiz.title, quiz_path(quiz.id) %></h4></li>
-    			 <hr>
-    		  <% end %>
-    		</div>
-      </div>
       
+		<div class="col-sm-4">
+		<h1>Created</h1>
+			<hr>
+			<% @user.quizzes.each do |quiz| %>
+				<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
+				<li type="none"><%= quiz.content.first(50) %></li>
+				<hr>
+			<% end %>
+		</div>
+		<div class='col-sm-4 taken'>
+		<h1>Taken</h1>
+			<hr>
+			<% @enrichments.each do |enrichment| %>
+				<li type="none"><h3><%= link_to enrichment.quiz.title, quiz_path(enrichment.quiz.id) %></h3></li>
+				<li type="none"><%= enrichment.quiz.content.first(50) %></li>
+				<hr>
+			<% end %>
+		</div>
+	</div>
+
 </div>
