@@ -160,7 +160,24 @@ a.title:hover:before {
 }
 
 #index-quizzes {
-  top: 50%;
+  // top: 50%;
+  padding-top: 150px;
+}
+
+.quiz-nav {
+  margin: 0;
+  font-size: 16px; 
+  font-family: 'Cabin', sans-serif !important;
+}
+
+.quiz-nav span, em {
+  font-size: 16px; 
+  font-family: 'Cabin', sans-serif !important;
+}
+
+.quiz-nav a {
+   font-size: 16px; 
+  font-family: 'Cabin', sans-serif !important;
 }
 
 
@@ -282,6 +299,16 @@ h4.quiz-title:hover > a{
 
 .all-quizzes {
   height: 150px;
+}
+
+.all-quizzes h2 a {
+  font-weight: 700 !important;
+  font-family: 'Crimson Text', serif;
+  color: black;
+}
+
+.all-quizzes p {
+  font-family: 'Cabin', sans-serif !important;
 }
 
 

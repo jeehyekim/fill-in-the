@@ -23,7 +23,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
-		@current_user = current_user
+		# @current_user = current_user
 		@quiz = Quiz.find(params[:id])
 		render :show
 	end
