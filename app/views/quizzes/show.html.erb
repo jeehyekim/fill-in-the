@@ -52,7 +52,14 @@
 
 	// buildNestedArray takes in an array of text and a target string of keywords and builds a nested array of [index, 'word'] arrays that are used in the larger functions.	
 	var buildNestedArray = function(stringContent, stringKeyWords) {
-		var huntingArray = stringKeyWords.split(' '); //turns the string of target words into an array of string
+		var huntingArray = stringKeyWords.split(' ');
+		// remove any words with apostrophes from the huntingArray
+		for (i=0; i<huntingArray.length; i+=1) {
+			if (huntingArray[i].indexOf('\'') >= 0) {
+				huntingArray.splice( i, 1);
+			}
+		}
+
 		var contentArray = stringContent.match(/[\w-']+|[^\w]+/g);
 		var outerArray = [];
 		for (i=0; i<contentArray.length; i+=1) {
