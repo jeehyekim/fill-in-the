@@ -30,6 +30,9 @@
               <p><%= quiz.content.first(80) %>...</p>
             </div>
           <% end %>
+        <div id="all-quiz-button">
+          <%= link_to "See all..", quizzes_path, class: "btn", id: "all-quizzes" %>
+        </div>
         </div>
     </div>
   </section>
