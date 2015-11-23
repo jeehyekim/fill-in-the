@@ -54,20 +54,11 @@
 
 	// buildNestedArray takes in an array of text and a target string of keywords and builds a nested array of [index, 'word'] arrays that are used in the larger functions.	
 	var buildNestedArray = function(stringContent, stringKeyWords) {
-		var huntingArray = stringKeyWords.split(' ');
-		for (i=0; i<huntingArray.length; i+=1) {
-			// remove any words with apostrophes from the huntingArray
-			if (huntingArray[i].indexOf('\'') >= 0) {
-				huntingArray.splice( i, 1);
-			} else {
-				// checks to see if there are double words in huntingArray, and if so, removes them here.
-				for (j=0; j<huntingArray.length; j+=1) {
-					if (huntingArray[i] == huntingArray[j]) {
-						huntingArray.splice( j, 1);
-					}
-				}
-			}
-		}
+
+		var huntingArray = stringKeyWords.split(/[ ,]+/).filter(Boolean);
+		// strip punctuation from the end of each word if there, to get rid of commas that people may have put in array orders
+
+		// this regex splits the content into an array where the whitespace and all punctuation is saved in it's own index for the purpose of rebuilding later.
 		var contentArray = stringContent.match(/[\w-']+|[^\w]+/g);
 		var outerArray = [];
 		for (i=0; i<contentArray.length; i+=1) {
@@ -155,14 +146,12 @@
 	// makeBlankedText builds the blanked text on the page using all the other functions
 	var makeBlankedText = function(stringContent, stringKeyWords) {
 		var nestedArr = buildNestedArray(stringContent, stringKeyWords); //turn keyword string into nested array of keywords with 
-		// var stringC = stringContent;
 		fromNestedArrToDOM(stringContent, nestedArr);
 	};
 
 	// randBlankedText creates blanks and forms with randomly selected words instead of targeted keywords.
 	var randBlankedText = function(num, stringContent) {
 			var nestedArr = randomNestedBuild(num, stringContent);
-			// var stringC = stringContent;
 			fromNestedArrToDOM(stringContent, nestedArr);
 	};
 
