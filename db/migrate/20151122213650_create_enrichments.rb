@@ -6,8 +6,6 @@ class CreateEnrichments < ActiveRecord::Migration
       t.boolean :complete
 
       t.timestamps null: false
-      t.belongs_to :user
-      t.belongs_to :quiz
     end
   end
 end

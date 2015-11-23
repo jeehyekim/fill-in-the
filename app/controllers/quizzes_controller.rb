@@ -9,10 +9,7 @@ class QuizzesController < ApplicationController
 
 		@quiz = Quiz.create(quiz_params)
 		@quiz.user_id = current_user.id
-		# p quiz_params
-		# p "quiz params content is: "
-		# p quiz_params["content"]
-		
+
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
 		else
@@ -21,6 +18,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
+		@current_user = current_user
 		@quiz = Quiz.find(params[:id])
 		render :show
 	end
