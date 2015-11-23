@@ -36,9 +36,10 @@ $(document).ready(function(){
 		  // TODO redirect to the user profile page
 		}
 	}); //this closes the #im-done click event
+
 }); // this closes the document ready function
 
-// the functions below are to run the process of making a blanked content
+// below are the vars and functions that work to run the quiz builder engine and for both random and keyword variations
 	var randomWordMinSize = 3;
 
 	// buildNestedArray takes in an array of text and a target string of keywords and builds a nested array of [index, 'word'] arrays that are used in the larger functions.	

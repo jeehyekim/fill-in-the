@@ -5,18 +5,26 @@
 			<h5 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
 			<%= User.find(@quiz.user_id).last_name %></h5>
 			<br>
-        <div class="edit-delete text-center">
-          <%= link_to "", edit_quiz_path(@quiz), class: "glyphicon glyphicon-edit", style: "margin-right: 10px" %>
-          <%= link_to "", quiz_path(@quiz), method: :delete, class: "glyphicon glyphicon-trash" %>
-        </div>
+
+      <% if !current_user.nil? %>
+        <% if current_user.id == @quiz.user_id %>
+          <div class="edit-delete text-center">
+            <%= link_to "", edit_quiz_path(@quiz), class: "glyphicon glyphicon-edit", style: "margin-right: 10px" %>
+            <%= link_to "", quiz_path(@quiz), method: :delete, class: "glyphicon glyphicon-trash" %>
+          </div>
+        <% end %>
         <br>
-			<div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
-				<p class='current_user' id='<%= @current_user.id %>' style='display:none'></p>
-				<%= simple_format(@quiz.content) %>
-			</div>
-      <div class="save-read">
-        <button class="btn btn-primary pull-right" id="quiz-btn">Take Quiz</button>
+        <p class='current_user' id='<%= current_user.id %>' style='display:none'></p>
+      <% end %>
+        <div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
+        <%= simple_format(@quiz.content) %>
       </div>
+
+        <div class="save-read">
+          <button class="btn btn-primary pull-right" id="quiz-btn">Take Quiz</button>
+        </div>
+
+
     </div>
   </div>
 </div>

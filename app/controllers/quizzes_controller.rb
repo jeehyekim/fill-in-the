@@ -2,7 +2,7 @@ class QuizzesController < ApplicationController
 
 	def index
 		@quiz = Quiz.all
-		@quiz = Quiz.paginate(:page => params[:page], :per_page => 4)
+		@quiz = Quiz.paginate(:page => params[:page], :per_page => 12)
 	end
 
 	def new
@@ -23,7 +23,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
-		@current_user = current_user
+		# @current_user = current_user
 		@quiz = Quiz.find(params[:id])
 		render :show
 	end
