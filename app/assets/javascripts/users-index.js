@@ -17,8 +17,6 @@ $(document).ready(function(){
 		}).done(function(response){
 			console.log(response.enrichment);
 		});
-
-
 	}); //this closes the #quiz-btn click event
 
 	// this click event on im done button will check that all the fields are correct, then handle eventualities
