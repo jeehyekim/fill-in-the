@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-			<h1 class="text-center"><%= @quiz.title %></h1>
+			<h1 class="text-center quiz" id="<%= @quiz.id %>"><%= @quiz.title %></h1>
 			<h4 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
 			<%= User.find(@quiz.user_id).last_name %></h4>
 			<br>
@@ -11,6 +11,7 @@
         </div>
         <br>
 			<div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
+				<p class='current_user' id='<%= @current_user.id %>' style='display:none'></p>
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
@@ -20,26 +21,15 @@
   </div>
 </div>
 
-
-
-
 <!-- below will show the blanked content and the input fields for answers -->
 
 <div class="row" id="altered-original" style="display:none">
 	<div class="col-xs-6">
 		<div class="text-area">
 		</div>	
-	</div>
-	<div class="col-xs-6">
-		<form class="my-form" id="target-form">
-			<div class="block-stack">
-			</div>
-			<button class="btn btn-primary" id="im-done">I'm Done!</button>
-		</form>		
+		<button class="btn btn-primary" id="im-done">I'm Done!</button>
 	</div>
 </div>
-
-
 
 <script>
 

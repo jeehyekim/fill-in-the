@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 	has_many :quizzes
-	has_many :enrichments, dependent: :destroy
-	has_many :quizzes, through: :enrichments
 
   has_secure_password
   

@@ -1,35 +1,37 @@
 
-<div class="full-width-container">
 
-  <div class="main text-center">
-    <a class="title">Fill in The</a>
-		<div class="row">
-		  <div class="text-center header col-xs-12 col-sm-6 col-sm-offset-3 about-content">
-		    <div id="quiz-button">
-		      <%= link_to "Create a Quiz Now!", new_quiz_path, class: "btn", id: "create-quiz-home" %>
-		    </div>
-		  </div>
-		</div>
-		<div class="row">
-		  <div class="scroll-down text-center">
-	    	<a class="btn page-scroll" href="#quizzes"><i class="glyphicon glyphicon-chevron-down"></i></a>
-	  	</div>
-	  </div>
+<div class="main text-center">
+  <a class="title">Fill in The</a>
+</div>
+
+<div class="main-div">
+  <div class="row">
+    <div class="text-center header col-xs-12 col-sm-6 col-sm-offset-3 about-content">
+      <div id="quiz-button">
+        <%= link_to "Create a Quiz Now!", new_quiz_path, class: "btn", id: "create-quiz-home" %>
+      </div>
+    </div>
   </div>
 
-	<section id="quizzes">
-		<div class="container-fluid">
-		    <div class="row text-center content-row">
-		    	<% @quizzes.each do |quiz| %>
-		        <div class="col-md-3 col-sm-6 all-quizzes">
-		                <i class="fa fa-laptop fa-4x"></i>
-		                <h3><%= link_to quiz.title, quiz_path(quiz) %></h3>
-		                <p><%= quiz.content.first(80) %>...</p>
-		        </div>
-		      <% end %>
-		    </div>
-		</div>
-	</section>
-
+  <div class="row">
+    <div class="scroll-down text-center">
+      <a class="btn page-scroll" href="#quizzes"><i class="glyphicon glyphicon-chevron-down"></i></a>
+    </div>
+  </div>
 </div>
+
+  <section id="quizzes">
+    <div class="container-fluid" id="index-quizzes">
+        <div class="row text-center content-row">
+          <% @quizzes.each do |quiz| %>
+            <div class="col-md-3 col-sm-6 all-quizzes">
+              <i class="fa fa-laptop fa-4x"></i>
+              <h3><%= link_to quiz.title, quiz_path(quiz) %></h3>
+              <p><%= quiz.content.first(80) %>...</p>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </section>
+
       
