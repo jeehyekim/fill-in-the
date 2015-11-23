@@ -6,13 +6,26 @@ font-family: 'Noto Serif', serif;*/
   font-family: 'Noto Serif', serif;
 }
 
-h1 {
+h2 {
   font-weight: 700 !important;
   font-family: 'Crimson Text', serif;
 }
 
-h5 {
+h5, h5 a {
   font-family: 'Cabin', sans-serif;
+}
+
+h4 a {
+  font-family: 'Cabin', sans-serif !important;
+  // padding-bottom: 20px !important;
+}
+
+li {
+  text-decoration: none;
+}
+
+li p {
+  font-family: 'Cabin', sans-serif !important;
 }
 
 form {
