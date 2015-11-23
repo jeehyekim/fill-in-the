@@ -3,7 +3,7 @@
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<h2 class="text-center quiz" id="<%= @quiz.id %>"><%= @quiz.title %></h2>
 			<h5 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
-			<%= User.find(@quiz.user_id).last_name %></h4>
+			<%= User.find(@quiz.user_id).last_name %></h5>
 			<br>
         <div class="edit-delete text-center">
           <%= link_to "", edit_quiz_path(@quiz), class: "glyphicon glyphicon-edit", style: "margin-right: 10px" %>
@@ -24,9 +24,13 @@
 <!-- below will show the blanked content and the input fields for answers -->
 
 <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="altered-original" style="display:none">
-		<div class="text-area">
+    <h2 class="text-center quiz" id="<%= @quiz.id %>"><%= @quiz.title %></h2>
+    <h5 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
+    <%= User.find(@quiz.user_id).last_name %></h5>
+    <br>
+		<div class="text-area" style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px; line-height: 2em">
 		</div>	
-		<button class="btn btn-primary" id="im-done">I'm Done!</button>
+		<button class="btn btn-primary pull-right" id="im-done">I'm Done!</button>
 	</div>
 </div>
 
