@@ -26,7 +26,7 @@
 
 <!-- below will show the blanked content and the input fields for answers -->
 
-<div class="row" id="altered-original">
+<div class="row" id="altered-original" style="display:none">
 	<div class="col-xs-6">
 		<div class="text-area">
 		</div>	
@@ -129,13 +129,13 @@
 			// console.log("indexOut = ", indexOut);
 			var wordOut = targetSorted[i][1]; //grabs word from target array
 			// console.log("wordOut = ", wordOut); 
-			var numberIn = '|-----' + num + '-----|';
+			var numberIn = "<input type='text' name='answer' placeholder='" + num + "' data-answer='" + wordOut + "'>";
 			var arrBlanked = arr;
 			arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
 			arrJoined = arrBlanked.join(''); //joined the array back into a string
 			// console.log(arrJoined);
 
-			addBlockToForm(wordOut);
+			// addBlockToForm(wordOut);
 			num++;
 		}
 		// j querrry to throw the text onto the page
