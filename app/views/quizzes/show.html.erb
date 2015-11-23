@@ -114,7 +114,7 @@
 		return rando;       
   };
 
-  // This checks to see if the randomly selected word is already in the array of random words or not.
+  // alreadyInArray checks to see if the randomly selected word is already in the array of random words or not.
   var alreadyInArray = function(num, arr) {
 	  for (i=0; i<arr.length; i+=1) {
       if (num == arr[i][0]) {
@@ -123,7 +123,7 @@
 	  }
 	};
 
-	// this takes in the string of content and the nested array and then builds the blanked form and appends it to the DOM
+	// fromNestedArrToDOM takes in the string of content and the nested array and then builds the blanked form and appends it to the DOM
 	var fromNestedArrToDOM = function(stringContent, nestedArr) {
 		var arr = stringContent.match(/[\w-']+|[^\w]+/g);
 		var nestedArrSorted = sortNestedArray(nestedArr);
@@ -141,15 +141,14 @@
 		$('.text-area').append(arrJoined);	
 	};
 
-	// this function builds the blanked text on the page using all the other functions
-	// var makeBlankedText = function(stringContent, stringKeyWords) {
+	// makeBlankedText builds the blanked text on the page using all the other functions
 	var makeBlankedText = function(stringContent, stringKeyWords) {
 		var nestedArr = buildNestedArray(stringContent, stringKeyWords); //turn keyword string into nested array of keywords with 
 		// var stringC = stringContent;
 		fromNestedArrToDOM(stringContent, nestedArr);
 	};
 
-	// this function creates blanks and forms with randomly selected words instead of targeted keywords.
+	// randBlankedText creates blanks and forms with randomly selected words instead of targeted keywords.
 	var randBlankedText = function(num, stringContent) {
 			var nestedArr = randomNestedBuild(num, stringContent);
 			// var stringC = stringContent;
