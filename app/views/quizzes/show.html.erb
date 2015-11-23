@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row" id="original">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-			<h1 class="text-center"><%= @quiz.title %></h1>
+			<h1 class="text-center quiz" id='<%= @quiz.id %>'<%= @quiz.title %></h1>
 			<h4 class="text-center">by: <%= User.find(@quiz.user_id).first_name %>
 			<%= User.find(@quiz.user_id).last_name %></h4>
 			<br>
@@ -11,6 +11,7 @@
         </div>
         <br>
 			<div id='quiz-body', style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px">
+				<p class='current_user' id='<%= @current_user.id %>' style='display:none'></p>
 				<%= simple_format(@quiz.content) %>
 			</div>
       <div class="save-read">
@@ -254,6 +255,20 @@ numR = 1;
 	// 	$("#original").hide();
 	// 	$("#altered-original").show();
 	// });
+	$('#quiz-btn').on('click', function(){
+		var data = {quiz_id: $('.quiz').attr('id'),
+								user_id: $('.current_user').attr('id')}
+
+		$.ajax({
+			type: 'POST',
+			url: '/quizzes/' + data.quiz_id + '/enrichments',
+			datatype: 'JSON',
+			data: data
+		}).done(function(response){
+			console.log(response.enrichment);
+		});
+
+	});
 
 
 }); // document.ready
