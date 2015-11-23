@@ -16,10 +16,10 @@
       <br>
       <%= f.text_area :content, :placeholder => "CONTENT...", size:"4x15" , class: "form-control" %>
       <br>
-      <%= f.text_field :keyword, :placeholder => "Type keywords here to hunt by keywords or a number to randomly select that number of words.", class: "form-control" %>
+      <%= f.text_field :keyword, :placeholder => "KEYWORDS...", class: "form-control" %>
       <br>
       <div class="text-right">
-				<%= f.submit "Create", class: "btn", id: "create-quiz-btn" %>
-			</div>
+        <%= f.submit "save", class: "btn", id: "create-quiz-btn" %>
+      </div>
   <% end %>
 </div>

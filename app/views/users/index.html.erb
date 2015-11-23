@@ -1,27 +1,37 @@
 
-<div class="full-width-container">
-  <div class="main text-center">
-    <!-- <p>Welcome to</p><br> -->
-    <a class="title">Fill in The</a>
+
+<div class="main text-center">
+  <a class="title">Fill in The</a>
+</div>
+
+<div class="main-div">
+  <div class="row">
+    <div class="text-center header col-xs-12 col-sm-6 col-sm-offset-3 about-content">
+      <div id="quiz-button">
+        <%= link_to "Create a Quiz Now!", new_quiz_path, class: "btn", id: "create-quiz-home" %>
+      </div>
+    </div>
   </div>
 
-  <div class="text-center header col-xs-12 col-sm-6 col-sm-offset-3 about-content">
-    <!-- <h2>About Us</h2>
-    <div class="about">
-    <p>Cream organic qui extra latte, con panna espresso whipped half and half americano. Trifecta, sweet, americano as, lungo blue mountain, redeye extraction beans siphon chicory. Cinnamon spoon americano, caffeine et carajillo, half and half con panna black as viennese cultivar. Iced foam, rich sweet pumpkin spice seasonal blue mountain cream french press shop dark siphon.</p>
-    </div> -->
-    <div class="quiz-button">
-      <%= link_to "Create a Quiz Now!", new_quiz_path, class: "btn btn-primary" %>
+  <div class="row">
+    <div class="scroll-down text-center">
+      <a class="btn page-scroll" href="#quizzes"><i class="glyphicon glyphicon-chevron-down"></i></a>
     </div>
   </div>
 </div>
 
-<!-- <h1>Welcome to Users Index</h1>
+  <section id="quizzes">
+    <div class="container-fluid" id="index-quizzes">
+        <div class="row text-center content-row">
+          <% @quizzes.each do |quiz| %>
+            <div class="col-md-3 col-sm-6 all-quizzes">
+              <i class="fa fa-laptop fa-4x"></i>
+              <h3><%= link_to quiz.title, quiz_path(quiz) %></h3>
+              <p><%= quiz.content.first(80) %>...</p>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </section>
 
-<div>
-  There are currently <%= @users.length %> users signed up.
-</div>
-
-<div>
-  This will be our homepage. Sign up, Login, etc go here.
-</div> -->
+      

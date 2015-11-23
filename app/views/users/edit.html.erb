@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Edit Profile</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <% if !@user.image %>
+          <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
+          <% else %>
+          <%= image_tag @user.image.url(:thumb) %>
+          <% end %>
+          <h2><%= @user.username %></h2>
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-5 col-md-offset-1 personal-info">
+        <h3>Personal info</h3>
+        <%= form_for @user, html: { multipart: true } do |f| %>
+          <%= f.file_field :image, class: "form-control", placeholder: 'PROFILE PICTURE' %>
+          <br>
+          <%= f.text_field :first_name, class: "form-control", placeholder: 'FIRST NAME' %>
+          <br>
+          <%= f.text_field :last_name, class: "form-control", placeholder: 'LAST NAME' %>
+          <br>
+          <%= f.text_field :email, class: "form-control", placeholder: 'EMAIL' %>
+          <br>
+          <!-- <div class="text-right"> -->
+            <%= f.submit "Update", class: 'btn' %>
+          </div>
+        <% end %>          
+      </div>
+  </div>
+</div>
+<hr>

@@ -33,12 +33,13 @@ gem 'spring', '~> 1.4'
 
 gem 'friendly_id', '~> 5.1'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'paperclip', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'better_errors'
 end
 
 group :development do
@@ -48,4 +49,6 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
+
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 
