@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	// this click event on #quiz-btn hides the original text and displays the blanked out text when 'take quiz' button is clicked
 	$('#quiz-btn').on('click', function(e) {
+		console.log("quiz button clicked");
 		e.preventDefault();
 		// hides the top div and shows the bottom div
 		document.getElementById('original').style.display = "none";

@@ -36,12 +36,6 @@
 
 <script>
 
-	$(document).ready(function(){
-	
-		keywordsOrRandom("<%= @quiz.content %>", "<%= @quiz.keyword %>");
-
-		keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
-	}); // document.ready
 
 
 	var randomWordMinSize = 3;
@@ -130,7 +124,7 @@
 			var numberIn = "<input type='text' name='answer' class='quiz-blank' placeholder='" + num + "' data-answer='" + wordOut + "'>";
 			var arrBlanked = arr;
 			arrBlanked[indexOut] = numberIn; //replaces the word at the target array index with a numbered blank
-			arrJoined = arrBlanked.join(''); //joined the array back into a string
+			var arrJoined = arrBlanked.join(''); //joined the array back into a string
 			num++;
 		}
 		// j querrry to throw the blanked text onto the page
@@ -206,4 +200,10 @@
 		});
 	}
 
+	$(document).ready(function(){
+	
+		keywordsOrRandom("<%= @quiz.content %>", "<%= @quiz.keyword %>");
+
+		keypress(); // this starts the event listener on the input fields that check the answer against the expected answer with each keypress
+	}); // document.ready
 </script>
