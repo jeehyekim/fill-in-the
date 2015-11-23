@@ -5,6 +5,7 @@ $(document).ready(function(){
 		// hides the top div and shows the bottom div
 		document.getElementById('original').style.display = "none";
 		document.getElementById('altered-original').style.display = "block";
+		// this will also need to associate the current user user_id with the current quiz_id to the Enrichment join table, complete status will be default incomplete
 	});
 
 	// this click event on im done button will check that all the fields are correct, then handle eventualities
