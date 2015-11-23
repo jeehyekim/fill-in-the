@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :quizzes, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :quizzes, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
   	resources :enrichments
   end
 
