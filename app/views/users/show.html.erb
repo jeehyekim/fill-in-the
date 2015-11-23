@@ -21,15 +21,12 @@
 		</div>
 		<div class='col-sm-4 taken'>
 		<h1>Taken</h1>
-		<hr>
-		<% @user.quizzes.each do |quiz| %>
-			<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz.id) %></h3></li>
-			<li type="none"><%= quiz.content %></li>
 			<hr>
-		<% end %>
-		<div class="col-sm-1">
-			<h4>progress</h4>
-		</div>
+			<% @enrichments.each do |enrichment| %>
+				<li type="none"><h3><%= link_to enrichment.quiz.title, quiz_path(enrichment.quiz.id) %></h3></li>
+				<li type="none"><%= enrichment.quiz.content %></li>
+				<hr>
+			<% end %>
 		</div>
 	</div>
 </div>

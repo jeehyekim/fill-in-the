@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @enrichments = Enrichment.where(user_id: @user.id)
     render :show
   end
-
 
 private
   def user_params
