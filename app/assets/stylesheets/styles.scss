@@ -29,6 +29,15 @@ li p {
   font-family: 'Cabin', sans-serif !important;
 }
 
+li h3 > a {
+  color:black;
+  font-weight: 700;
+}
+
+li h3 > a:hover {
+  color:black;
+}
+
 form {
   margin-top: 100px;
 }
@@ -99,15 +108,17 @@ div.navbar-collapse li:hover:before {
 
 // LEFT NAVBAR
 .navigation-left {
-  position: fixed;
+  // position: fixed;
 }
 
+// USER SHOW PAGE
+
+.created, .take {
+  margin-bottom: 100px;
+}
 
 // USER INDEX PAGE 
 
-// .title {
-//   font-size:100px;
-// }
 
 a.title {
   padding-bottom: 60px;
