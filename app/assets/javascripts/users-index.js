@@ -16,25 +16,40 @@ $(document).ready(function(){
 			data: data
 		}).done(function(response){
 			console.log(response.enrichment);
+			$('#im-done').attr('data-enrichment-id', response.enrichment.id);
 		});
 	}); //this closes the #quiz-btn click event
 
-	// // this click event on im done button will check that all the fields are correct, then handle eventualities
-	// $('#im-done').on('click', function(e) {
-	// 	e.preventDefault();
-	// 	// each quiz-blank class input field that does NOT have class green-glow get class red-glow
-	// 	$('.quiz-blank').each( function(i) {
-	// 	    if ( !$(this).hasClass('green-glow') ) {
-	//         $(this).addClass('red-glow');
-	// 	    } 
-	// 	});
-	// 	// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
-	// 	if (!$(".quiz-blank").not(".green-glow").length) {
-	// 		console.log("OMG ALL CORRECT");
-	// 		// TODO change boolean of completed o'on Enrichment join table from false to true
-	// 	  // TODO redirect to the user profile page
-	// 	}
-	// }); //this closes the #im-done click event
+	// this click event on im done button will check that all the fields are correct, then handle eventualities
+	$('#im-done').on('click', function(e) {
+		e.preventDefault();
+		// each quiz-blank class input field that does NOT have class green-glow get class red-glow
+		$('.quiz-blank').each( function(i) {
+		    if ( !$(this).hasClass('green-glow') ) {
+	        $(this).addClass('red-glow');
+		    } 
+		});
+		// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
+		if (!$(".quiz-blank").not(".green-glow").length) {
+			console.log("OMG ALL CORRECT");
+			var quizId =  $('#im-done').attr('data-quiz-id');
+			var enrichmentId = $('#im-done').attr('data-enrichment-id');
+
+			$.ajax({
+				type: 'PUT',
+				url: '/quizzes/' + quizId + '/enrichments/' + enrichmentId,
+				datatype: 'JSON',
+				data: {complete: 'true' }
+			}).done(function(response){
+				console.log(response);
+				console.log("AJAX fired!");
+				window.location.href = response.redirect;
+
+			});
+			// TODO change boolean of completed o'on Enrichment join table from false to true
+		  // TODO redirect to the user profile page
+		}
+	}); //this closes the #im-done click event
 
 }); // this closes the document ready function
 

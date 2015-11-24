@@ -37,8 +37,11 @@
     <%= User.find(@quiz.user_id).last_name %></h5>
     <br>
 		<div class="text-area" style="border-top: 3px solid black; padding-top: 10px; border-bottom: 3px solid black; padding-bottom: 10px; line-height: 2em">
-		</div>	
-		<button class="btn btn-primary pull-right" id="im-done">I'm Done!</button>
+		</div>
+
+		<button class="btn btn-primary pull-right" id="im-done" data-quiz-id="<%= @quiz.id %>" data-enrichment-id="">I'm Done!</button>
+
+
 	</div>
 </div>
 
