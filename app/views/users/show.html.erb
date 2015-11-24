@@ -1,6 +1,6 @@
 <div class="container">
       <!-- left column -->
-      <div class="col-md-3 hidden-sm hidden-xs">
+      <div class="col-md-3  navigation-left">
         <div class="text-center navigation-left">
           <% if @user.image == nil %>
             <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
@@ -8,29 +8,31 @@
            <%= image_tag @user.image.url(:thumb) %>
           <% end %>
           <h2>Welcome, <%= @user.first_name %></h2>
-          <h5 style="font-family: 'Cabin', sans-serif;">Joined: <%= time_ago_in_words(@user.created_at) %> ago</h5>
+          <h5 style="font-family: 'Cabin', sans-serif">Joined: <%= time_ago_in_words(@user.created_at) %> ago</h5>
           <h5><%= link_to "Edit Profile", edit_user_path(@user) %></h5>
         </div>
       </div>
       
-		<div class="col-sm-4">
-		<h1>Created</h1>
-			<hr>
-			<% @user.quizzes.each do |quiz| %>
-				<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz) %></h3></li>
-				<li type="none"><%= quiz.content.first(50) %></li>
-				<hr>
-			<% end %>
-		</div>
-		<div class='col-sm-4 taken'>
-		<h1>Taken</h1>
-			<hr>
-			<% @enrichments.each do |enrichment| %>
-				<li type="none"><h3><%= link_to enrichment.quiz.title, quiz_path(enrichment.quiz) %></h3></li>
-				<li type="none"><%= enrichment.quiz.content.first(50) %></li>
-				<hr>
-			<% end %>
-		</div>
-	</div>
+    <div class="row col-md-9">
+  		<div class="col-sm-5 col-sm-offset-1 created">
+  		<h2>Created</h2>
+  			<hr>
+  			<% @user.quizzes.each do |quiz| %>
+  				<li type="none"><h3><%= link_to quiz.title, quiz_path(quiz) %></h3></li>
+  				<li type="none"><p><%= quiz.content.first(50) %>...</p></li>
+  				<hr>
+  			<% end %>
+  		</div>
+  		<div class='col-sm-5 col-sm-offset-1 taken'>
+  		<h2>Taken</h2>
+  			<hr>
+  			<% @enrichments.each do |enrichment| %>
+  				<li type="none"><h3><%= link_to enrichment.quiz.title, quiz_path(enrichment.quiz) %></h3></li>
+  				<li type="none"><p><%= enrichment.quiz.content.first(50) %>...</p></li>
+  				<hr>
+  			<% end %>
+  		</div>
+  	</div>
 
+  </div>
 </div>
