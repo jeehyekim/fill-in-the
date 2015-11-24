@@ -19,22 +19,22 @@ $(document).ready(function(){
 		});
 	}); //this closes the #quiz-btn click event
 
-	// this click event on im done button will check that all the fields are correct, then handle eventualities
-	$('#im-done').on('click', function(e) {
-		e.preventDefault();
-		// each quiz-blank class input field that does NOT have class green-glow get class red-glow
-		$('.quiz-blank').each( function(i) {
-		    if ( !$(this).hasClass('green-glow') ) {
-	        $(this).addClass('red-glow');
-		    } 
-		});
-		// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
-		if (!$(".quiz-blank").not(".green-glow").length) {
-			console.log("OMG ALL CORRECT");
-			// TODO change boolean of completed o'on Enrichment join table from false to true
-		  // TODO redirect to the user profile page
-		}
-	}); //this closes the #im-done click event
+	// // this click event on im done button will check that all the fields are correct, then handle eventualities
+	// $('#im-done').on('click', function(e) {
+	// 	e.preventDefault();
+	// 	// each quiz-blank class input field that does NOT have class green-glow get class red-glow
+	// 	$('.quiz-blank').each( function(i) {
+	// 	    if ( !$(this).hasClass('green-glow') ) {
+	//         $(this).addClass('red-glow');
+	// 	    } 
+	// 	});
+	// 	// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
+	// 	if (!$(".quiz-blank").not(".green-glow").length) {
+	// 		console.log("OMG ALL CORRECT");
+	// 		// TODO change boolean of completed o'on Enrichment join table from false to true
+	// 	  // TODO redirect to the user profile page
+	// 	}
+	// }); //this closes the #im-done click event
 
 }); // this closes the document ready function
 

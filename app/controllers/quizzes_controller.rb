@@ -49,6 +49,11 @@ class QuizzesController < ApplicationController
     redirect_to user_path(@quiz.user_id)
   end
 
+ #  def submitquiz
+	# 	@enrichment = Enrichment.find(params[:id])
+	# 	@enrichment.update_attributes(complete: true)	
+	# end
+
 	private
 
 	def quiz_params
