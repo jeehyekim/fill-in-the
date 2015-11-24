@@ -17,4 +17,19 @@ class EnrichmentsController < ApplicationController
 		end
 	end
 
+	# def edit
+	# 	@quiz = Quiz.find(params[:id])
+	# 	@user = User.find(params[:id])
+	# 	@enrichment = Enrichment.where(user_id: @user.id && quiz_id: @quiz.id)
+	# end
+
+	def update
+		@enrichment = Enrichment.find(params[:id])
+		@enrichment.complete = true
+		@enrichment.save
+		render :json => {
+			:redirect => user_path(current_user)
+		}
+	end
+
 end

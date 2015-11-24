@@ -17,6 +17,7 @@ $(document).ready(function(){
 			data: data
 		}).done(function(response){
 			console.log(response.enrichment);
+			$('#im-done').attr('data-enrichment-id', response.enrichment.id);
 		});
 	}); //this closes the #quiz-btn click event
 
@@ -29,10 +30,24 @@ $(document).ready(function(){
 	        $(this).addClass('red-glow');
 		    } 
 		});
-		// if the input fields are all gree, it console logs correct, then changes the boolean, and redirects to user profile page
+		// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
 		if (!$(".quiz-blank").not(".green-glow").length) {
 			console.log("OMG ALL CORRECT");
-			// TODO change boolean of completed on Enrichment join table from false to true
+			var quizId =  $('#im-done').attr('data-quiz-id');
+			var enrichmentId = $('#im-done').attr('data-enrichment-id');
+
+			$.ajax({
+				type: 'PUT',
+				url: '/quizzes/' + quizId + '/enrichments/' + enrichmentId,
+				datatype: 'JSON',
+				data: {complete: 'true' }
+			}).done(function(response){
+				console.log(response);
+				console.log("AJAX fired!");
+				window.location.href = response.redirect;
+
+			});
+			// TODO change boolean of completed o'on Enrichment join table from false to true
 		  // TODO redirect to the user profile page
 		}
 	}); //this closes the #im-done click event
