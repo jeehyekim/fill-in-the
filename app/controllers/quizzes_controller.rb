@@ -24,17 +24,17 @@ class QuizzesController < ApplicationController
 
 	def show
 		# @current_user = current_user
-		@quiz = Quiz.find(params[:id])
+		@quiz = Quiz.friendly.find(params[:id])
 		render :show
 	end
 
   def edit
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.friendly.find(params[:id])
     @quiz.user_id = current_user.id
   end
 
   def update
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.friendly.find(params[:id])
     @quiz.user_id = current_user.id
     @quiz.update_attributes(quiz_params)
     # @quiz.destroy!
@@ -43,7 +43,7 @@ class QuizzesController < ApplicationController
   end
 
   def destroy 
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.friendly.find(params[:id])
     @quiz.user_id = current_user.id
     @quiz.destroy!
     redirect_to user_path(@quiz.user_id)
