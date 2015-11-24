@@ -28,10 +28,10 @@ $(document).ready(function(){
 	        $(this).addClass('red-glow');
 		    } 
 		});
-		// if the input fields are all gree, it console logs correct, then changes the boolean, and redirects to user profile page
+		// if the input fields are all green, it console logs correct, then changes the boolean, and redirects to user profile page
 		if (!$(".quiz-blank").not(".green-glow").length) {
 			console.log("OMG ALL CORRECT");
-			// TODO change boolean of completed on Enrichment join table from false to true
+			// TODO change boolean of completed o'on Enrichment join table from false to true
 		  // TODO redirect to the user profile page
 		}
 	}); //this closes the #im-done click event
