@@ -45,7 +45,6 @@ $(document).ready(function(){
 				console.log(response);
 				console.log("AJAX fired!");
 				window.location.href = response.redirect;
-
 			});
 			// TODO change boolean of completed o'on Enrichment join table from false to true
 		  // TODO redirect to the user profile page

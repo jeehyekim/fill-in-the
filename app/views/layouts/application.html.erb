@@ -29,11 +29,11 @@
 	      <a class="navbar-brand" href="/"><p>Fill in The</p></a>
 	      <ul class="nav navbar-nav navbar-right">
 	      	
-        <% if !current_user.nil? %>
-          <% if current_user == @user || @quiz %>
-	      	<li><%= link_to "Create Quiz", new_quiz_path, class:"pull-right" %></li>
+          <% if !current_user.nil? %>
+            <% if current_user == @user || @quiz %>
+  	      	<li><%= link_to "Create Quiz", new_quiz_path, class:"pull-right" %></li>
+            <% end %>
           <% end %>
-        <% end %>
 	      	<% if current_user.blank? %>
 		        <li><%= link_to "Sign Up", new_user_path, class:"pull-right" %></li>
 		        <li><%= link_to "Log In", new_session_path, class:"pull-right" %></li>
